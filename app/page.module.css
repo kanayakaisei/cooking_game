@@ -1,3 +1,6 @@
 body{
-    background: slategray;
+    background: rgb(91, 122, 180);
+}
+.title{
+    color: white;
 }
