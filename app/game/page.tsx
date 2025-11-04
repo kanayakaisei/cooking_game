@@ -1,3 +1,10 @@
+"use client";
+import { useState } from "react";
+import Cut from "./components/CutStep";
+import Mix from "./components/MixStep";
+import Flip from "./components/FlipStep";
+
+
 const Game = () => {
     return (
         <div>
