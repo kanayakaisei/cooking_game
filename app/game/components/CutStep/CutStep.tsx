@@ -1,3 +1,5 @@
+import styles from "./cutStep.module.css";
+
 const Cut = () => {
     return (
         <div>

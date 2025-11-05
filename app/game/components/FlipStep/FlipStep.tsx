@@ -1,3 +1,5 @@
+import styles from "./flipStep.module.css";
+
 const Flip = () => {
     return (
         <div>

@@ -1,3 +1,5 @@
+import styles from "./mixStep.module.css";
+
 const Mix = () => {
     return (
         <div>
