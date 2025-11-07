@@ -9,7 +9,13 @@ import Flip from "./components/FlipStep/FlipStep";
 const Game = () => {
     return (
         <div>
-            <h1>ゲーム本体ページ（流れの管理）</h1>
+            <h1>ゲーム本体ページ</h1>
+
+            <div>
+                <Cut></Cut>
+                <Mix></Mix>
+                <Flip></Flip>
+            </div>
         </div>
     )
 }
