@@ -26,17 +26,20 @@ const Game = () => {
 
 
     return (
-        <div>
-            <h1>ゲーム本体ページ</h1>
-            {step === "cut" && <Cut />}
-            {step === "mix" && <Mix />}
-            {step === "flip" && <Flip />}
-            {step === "finish" && <p>ゲーム完了！ (成功と失敗のページ切り替えをここで出来てるように) <Link href="/">戻る</Link > </p>}
+        <>
+            <div >
+                <h1>ゲーム本体ページ</h1>
+                {step === "cut" && <Cut />}
+                {step === "mix" && <Mix />}
+                {step === "flip" && <Flip />}
+                {step === "finish" && <p>ゲーム完了！ (成功と失敗のページ切り替えをここで出来てるように) <Link href="/">戻る</Link > </p>}
 
-            {step !== "finish" && (
-                <button onClick={handle}>クリック</button>
-            )}
-        </div>
+                {step !== "finish" && (
+                    <button onClick={handle}>クリック</button>
+                )}
+            </div >
+
+        </>
     )
 }
 

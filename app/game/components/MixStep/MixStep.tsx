@@ -3,15 +3,15 @@ import Image from "next/image";
 
 const Mix = () => {
     return (
-        <div>
+        <>
             <h1>料理を混ぜる</h1>
             <Image
-                src="/Group.png"
-                width={100}
-                height={400}
+                src="/image/Group.png"
+                width={200}
+                height={360}
                 alt="ヘラ"
             ></Image>
-        </div>
+        </>
     )
 }
 
