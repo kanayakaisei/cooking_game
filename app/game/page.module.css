@@ -1,7 +1,5 @@
-body {
-    background-color: rgb(74, 255, 168);
-}
-
-h1 {
-    color: #FFF;
+.mainVisual {
+    width: 100%;
+    height: auto;
+    background-image: no-repeat url(../../../../public/image/mainVisual.jpg) center center /cover;
 }

@@ -4,7 +4,6 @@ import Image from "next/image";
 const Cut = () => {
     return (
         <>
-            <h1>食材切る</h1>
             <Image
                 src="/image/Ellipse.png"
                 width={400}

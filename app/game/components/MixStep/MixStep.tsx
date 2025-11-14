@@ -4,7 +4,6 @@ import Image from "next/image";
 const Mix = () => {
     return (
         <>
-            <h1>料理を混ぜる</h1>
             <Image
                 src="/image/Group.png"
                 width={200}

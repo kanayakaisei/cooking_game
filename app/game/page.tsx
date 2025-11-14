@@ -11,12 +11,18 @@ import Flip from "./components/FlipStep/FlipStep";
 const Game = () => {
 
     const [step, setStep] = useState("cut");
+    const [count, setCount] = useState(0)
+
+    const newCount = count + 1;
 
     const handle = () => {
         if (step === "cut") {
             setStep("mix");
         } else if (step === "mix") {
-            setStep("flip");
+            setCount(newCount);
+            if (newCount >= 10) {
+                setStep("flip");
+            }
         } else if (step === "flip") {
             setStep("finish");
         } else if (step === "finish") {
@@ -27,8 +33,7 @@ const Game = () => {
 
     return (
         <>
-            <div >
-                <h1>ゲーム本体ページ</h1>
+            <div className={styles.mainVisual}>
                 {step === "cut" && <Cut />}
                 {step === "mix" && <Mix />}
                 {step === "flip" && <Flip />}
@@ -37,6 +42,7 @@ const Game = () => {
                 {step !== "finish" && (
                     <button onClick={handle}>クリック</button>
                 )}
+                <p>クリック回数{count}</p>
             </div >
 
         </>

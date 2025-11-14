@@ -5,7 +5,7 @@ import Image from "next/image";
 const Flip = () => {
     return (
         <>
-            <h1>食材をひっくり返す</h1>
+
 
             <Image
                 src="/image/frypan.png"
