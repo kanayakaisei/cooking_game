@@ -4,3 +4,60 @@
     background: no-repeat url(../../public/image/mainVisual.jpeg) center center /cover;
     overflow: hidden;
 }
+
+.Wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 330px;
+}
+
+.titleWrap {
+    position: relative;
+    width: 1000px;
+    height: 100px;
+    margin: 100px auto 0;
+}
+
+.circle {
+    position: absolute;
+    top: 8px;
+    left: 10px;
+    width: 90px;
+    height: 90px;
+    background: #fff;
+    border-radius: 50%;
+    filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title {
+    position: relative;
+    font-size: 48px;
+    text-align: center;
+    line-height: 100px;
+    border-radius: 60px;
+    border: 3px solid #45886A;
+    background: linear-gradient(91deg, #D8F1E6 0%, #EBFFF6 107.38%);
+    overflow: hidden;
+}
+
+.title::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #BEDED1;
+    clip-path:
+        polygon(0 0,
+            14% 0,
+            30% 100%,
+            0 100%);
+}
+
+.click {
+    position: relative;
+    top: 30%;
+}
