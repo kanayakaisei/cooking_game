@@ -5,7 +5,18 @@ const Cut = () => {
     return (
         <>
             <div className={styles.Wrapper}>
-                <h1 className={styles.title}>肉じゃが</h1>
+                <div className={styles.titleWrap}>
+                    <div className={styles.circle}>
+                        <Image
+                            src="/image/arrow.png"
+                            width={80}
+                            height={80}
+                            alt="矢印"
+                            className={styles.arrow}
+                        />
+                    </div>
+                    <h1 className={styles.title}>肉じゃが</h1>
+                </div>
                 <div className={styles.imageWrap}>
                     <Image
                         src="/image/chara.png"
