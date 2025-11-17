@@ -1,0 +1,36 @@
+.Wrapper {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 330px;
+}
+
+.title {
+    font-size: 48px;
+}
+
+.imageWrap {
+    display: flex;
+    position: relative;
+    z-index: 1;
+}
+
+.chara {
+    position: absolute;
+    left: -15%;
+    top: 40%;
+}
+
+.potato {
+    position: absolute;
+    bottom: 30%;
+    left: 20%;
+}
+
+.knife {
+    position: absolute;
+    right: -6%;
+    bottom: -30%;
+
+}

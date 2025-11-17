@@ -1,5 +1,6 @@
 .mainVisual {
     width: 100%;
-    height: auto;
-    background-image: no-repeat url(../../../../public/image/mainVisual.jpg) center center /cover;
+    height: 100vh;
+    background: no-repeat url(../../public/image/mainVisual.jpeg) center center /cover;
+    overflow: auto;
 }
