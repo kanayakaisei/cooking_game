@@ -1,0 +1,22 @@
+.imageWrap {
+    position: relative;
+}
+
+.chara {
+    position: absolute;
+    left: -15%;
+    top: 40%;
+}
+
+.potato {
+    position: absolute;
+    bottom: 30%;
+    left: 20%;
+}
+
+.knife {
+    position: absolute;
+    right: -6%;
+    bottom: -20%;
+
+}
