@@ -37,7 +37,7 @@ const Game = () => {
             <div className={styles.mainVisual}>
                 <div className={styles.Wrapper}>
                     <div className={styles.titleWrap}>
-                        <div className={styles.circle}>
+                        <button className={styles.circle}>
                             <Image
                                 src="/image/arrow.png"
                                 width={80}
@@ -45,7 +45,7 @@ const Game = () => {
                                 alt="矢印"
                                 className={styles.arrow}
                             />
-                        </div>
+                        </button>
                         <h1 className={styles.title}>肉じゃが</h1>
                     </div>
                     <div>
