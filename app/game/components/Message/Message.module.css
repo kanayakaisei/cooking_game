@@ -2,4 +2,20 @@
     position: absolute;
     top: 40%;
     right: 30%;
+
+}
+
+.messageWrap {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.message {
+    font-size: 48px;
+    z-index: 1;
+}
+
+.MePotato {
+    z-index: 1;
 }

@@ -1,10 +1,31 @@
 import styles from "./Message.module.css";
 import Image from "next/image";
 
+type Props = {
+    title: string
+    src: string
+    alt: string
+    width: number
+    height: number
+}
 
-const Message = () => {
+
+
+const Message = ({ title, src, width, height, alt }: Props) => {
+
+
     return (
         <>
+            <div className={styles.messageWrap}>
+                <h1 className={styles.message}>{title}</h1>
+                <Image
+                    src={src}
+                    alt={alt}
+                    width={width}
+                    height={height}
+                    className={styles.MePotato}
+                ></Image>
+            </div>
             <div className={styles.imageWrap}>
                 <Image
                     src="/image/speechBubble.png"
