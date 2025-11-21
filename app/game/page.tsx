@@ -59,8 +59,22 @@ const Game = () => {
                             alt="キャラクター"
                             className={styles.chara}
                         ></Image >
-                        {step === "message" && <Message />}
-                        {step === "cut" && <Cut />}
+
+                        {step === "message" && <Message
+                            title="じゃがいもをきろう！"
+                            src="/image/Me_potato.png"
+                            width={400}
+                            height={190}
+                            alt="じゃがいもの料理写真"
+                        />}
+
+                        {step === "cut" && <Cut
+                            src="/image/potato.png"
+                            width={450}
+                            height={250}
+                            alt="じゃがいも"
+                        />}
+
                         {step === "mix" && <Mix />}
                         {step === "flip" && <Flip />}
                         {step === "finish" && <p>ゲーム完了！ (成功と失敗のページ切り替えをここで出来てるように) <Link href="/">戻る</Link > </p>}
