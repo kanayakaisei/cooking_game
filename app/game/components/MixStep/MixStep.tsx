@@ -51,7 +51,6 @@ const Mix = () => {
                     height={330}
                     alt="おたま"
                     className={`${styles.ladle} ${positionClass[position]}`}
-
                 ></Image>
             </div>
 

@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import Message from "./components/Message/Message";
 import Cut from "./components/CutStep/CutStep";
 import Mix from "./components/MixStep/MixStep";
 import Flip from "./components/FlipStep/FlipStep";
@@ -11,13 +12,15 @@ import Flip from "./components/FlipStep/FlipStep";
 
 const Game = () => {
 
-    const [step, setStep] = useState("cut");
+    const [step, setStep] = useState("message");
     const [count, setCount] = useState(0)
 
     const newCount = count + 1;
 
     const handle = () => {
-        if (step === "cut") {
+        if (step === "message") {
+            setStep("cut");
+        } else if (step === "cut") {
             setStep("mix");
         } else if (step === "mix") {
             setCount(newCount);
@@ -56,6 +59,7 @@ const Game = () => {
                             alt="キャラクター"
                             className={styles.chara}
                         ></Image >
+                        {step === "message" && <Message />}
                         {step === "cut" && <Cut />}
                         {step === "mix" && <Mix />}
                         {step === "flip" && <Flip />}
