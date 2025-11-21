@@ -9,8 +9,10 @@ const Cut = () => {
 
 
 
-    // ingredients = 食材 を訳してigds
+    const [ImageCount, setImageCount] = useState(0);
 
+
+    // ingredients = 食材 を訳してigds
     const igdsImages = [
         "/image/potato.png",
         "/image/cutPotato.png",
@@ -22,16 +24,15 @@ const Cut = () => {
 
     ];
 
-    const [ImageCount, setImageCount] = useState(0);
 
     const handleImage = () => {
         setImageCount((prev) => {
 
-            const nextIndex = prev + 1;
-            if (nextIndex >= igdsImages.length) {
+            const nextImage = prev + 1;
+            if (nextImage >= igdsImages.length) {
                 return 0;
             }
-            return nextIndex;
+            return nextImage;
         });
     };
 

@@ -7,13 +7,15 @@ import Image from "next/image";
 
 const Mix = () => {
 
+    const [position, setPosition] = useState(0);
+
+
     const positionClass = [
         styles.pos1,
         styles.pos2,
     ]
 
 
-    const [position, setPosition] = useState(0);
 
     const handleMove = () => {
         setPosition((prev) => {
@@ -24,6 +26,7 @@ const Mix = () => {
             }
             return nextPosition;
         });
+
     };
 
 
