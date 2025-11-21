@@ -48,7 +48,14 @@ const Game = () => {
                         </button>
                         <h1 className={styles.title}>肉じゃが</h1>
                     </div>
-                    <div>
+                    <div className={styles.illustWrap}>
+                        <Image
+                            src="/image/chara.png"
+                            width={200}
+                            height={214}
+                            alt="キャラクター"
+                            className={styles.chara}
+                        ></Image >
                         {step === "cut" && <Cut />}
                         {step === "mix" && <Mix />}
                         {step === "flip" && <Flip />}
