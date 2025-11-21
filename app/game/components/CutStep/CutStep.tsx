@@ -7,14 +7,32 @@ import Image from "next/image";
 
 const Cut = () => {
 
-    const [potatoImage, setPotatoImage] = useState("/image/potato.png");
 
 
+
+    const igdsImages = [
+        "/image/potato.png",
+        "/image/cutPotato.png",
+        "/image/carrots.png",
+        // "image/cutCarrots.png",
+        "/image/meat.png",
+        // "/image/cutMeat.png",
+
+
+    ];
+
+    const [ImageCount, setImageCount] = useState(0);
 
     const handleImage = () => {
-        setPotatoImage("/image/cutPotato.png");
-    };
+        setImageCount((prev) => {
 
+            const nextIndex = prev + 1;
+            if (nextIndex >= igdsImages.length) {
+                return 0;
+            }
+            return nextIndex;
+        });
+    };
 
 
 
@@ -30,7 +48,7 @@ const Cut = () => {
                     className={styles.cutBoard}
                 ></Image >
                 <Image
-                    src={potatoImage}
+                    src={igdsImages[ImageCount]}
                     width={450}
                     height={250}
                     alt="じゃがいも"
@@ -49,6 +67,6 @@ const Cut = () => {
 
         </>
     )
-}
+};
 
 export default Cut;
