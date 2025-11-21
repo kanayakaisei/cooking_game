@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 330px;
+    gap: 310px;
 }
 
 .titleWrap {
@@ -58,7 +58,20 @@
             0 100%);
 }
 
+.illustWrap {
+    display: flex;
+}
+
+.chara {
+    position: absolute;
+    top: 70%;
+    left: 20%;
+    z-index: 1;
+
+}
+
+
 .click {
-    position: relative;
-    top: -100px;
+    position: absolute;
+    left: 200px;
 }

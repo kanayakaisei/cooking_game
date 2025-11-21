@@ -2,11 +2,7 @@
     position: relative;
 }
 
-.chara {
-    position: absolute;
-    left: -15%;
-    top: 40%;
-}
+
 
 .potato {
     position: absolute;
@@ -18,5 +14,9 @@
     position: absolute;
     right: -6%;
     bottom: -20%;
+}
+
+.cutButton {
+    position: absolute;
 
 }
