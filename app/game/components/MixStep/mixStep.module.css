@@ -6,8 +6,6 @@
 
 .ladle {
     position: absolute;
-    transition: transform 0.3s ease;
-
 }
 
 .pos1 {
@@ -20,6 +18,7 @@
     bottom: 45%;
 
 }
+
 
 .mixButton {
     position: absolute;
