@@ -9,6 +9,7 @@ const Cut = () => {
 
 
 
+    // ingredients = 食材 を訳してigds
 
     const igdsImages = [
         "/image/potato.png",
