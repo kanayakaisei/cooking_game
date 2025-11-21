@@ -5,31 +5,17 @@ import Image from "next/image";
 
 
 
-const Mix = () => {
+type Props = {
+    position: number;
+}
 
-    const [position, setPosition] = useState(0);
+const Mix = ({ position }: Props) => {
 
 
     const positionClass = [
         styles.pos1,
         styles.pos2,
     ]
-
-
-
-    const handleMove = () => {
-        setPosition((prev) => {
-
-            const nextPosition = prev + 1;
-            if (nextPosition >= positionClass.length) {
-                return 0;
-            }
-            return nextPosition;
-        });
-
-    };
-
-
 
     return (
         <>
@@ -51,7 +37,6 @@ const Mix = () => {
                 ></Image>
             </div>
 
-            <button onClick={handleMove} className={styles.mixButton}>混ぜる画面クリック</button>
         </>
     )
 }
