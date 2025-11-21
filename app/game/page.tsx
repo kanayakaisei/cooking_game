@@ -9,16 +9,46 @@ import Mix from "./components/MixStep/MixStep";
 import Flip from "./components/FlipStep/FlipStep";
 
 
+type Step =
+    | "potatoMsg"
+    | "cutPotatoMsg"
+    | "potatoCut"
+    | "carrotMsg"
+    | "cutCarrotMsg"
+    | "carrotCut"
+    | "mixMsg"
+    | "mix"
+    | "flipMsg"
+    | "flip"
+    | "finish";
+
+
+const potatoImages = [
+    "/image/potato.png",
+    "/image/cutPotato.png",
+];
+
+const carrotImages = [
+    "/image/carrots.png",
+    "/image/cutCarrots.png",
+];
 
 const Game = () => {
 
-    const [step, setStep] = useState("message");
-    const [count, setCount] = useState(0)
+    const [step, setStep] = useState("potatoMsg");
 
-    const newCount = count + 1;
+    const [count, setCount] = useState(0)
+    //10回押したとわかりやすくするためにおいてるけど、かなやさんが作業終わったらけしてもらっていいです
+
+    const [cutIndex, setCutIndex] = useState(0);
+    const [mixCount, setMixCount] = useState(0);
+
 
     const handle = () => {
-        if (step === "message") {
+        const newCount = count + 1;
+
+
+        if (step === "potatoMsg") {
             setStep("cut");
         } else if (step === "cut") {
             setStep("mix");
@@ -60,12 +90,20 @@ const Game = () => {
                             className={styles.chara}
                         ></Image >
 
-                        {step === "message" && <Message
+                        {step === "potatoMsg" && <Message
                             title="じゃがいもをきろう！"
                             src="/image/Me_potato.png"
                             width={400}
                             height={190}
                             alt="じゃがいもの料理写真"
+                        />}
+
+                        {step === "message" && <Message
+                            title="じゃがいもをきろう！"
+                            src="/image/Me_cutPotato.png"
+                            width={400}
+                            height={190}
+                            alt="じゃがいもが半分の料理写真"
                         />}
 
                         {step === "cut" && <Cut
