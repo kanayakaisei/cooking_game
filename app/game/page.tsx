@@ -29,73 +29,96 @@ type Step =
     | "finish";
 
 
-const potatoImages = [
-    "/image/potato.png",
-    "/image/cutPotato.png",
-];
-
-const carrotImages = [
-    "/image/carrot.png",
-    "/image/cutCarrot.png",
-];
-
-const meatImages = [
-    "/image/meat.png",
-    "/image/cutMeat.png",
-];
-
-const onionImages = [
-    "/image/onion.png",
-    "/image/cutOnion.png",
-];
+const potatoImages = ["/image/potato.png", "/image/cutPotato.png"];
+const carrotImages = ["/image/carrot.png", "/image/cutCarrot.png"];
+const meatImages = ["/image/meat.png", "/image/cutMeat.png"];
+const onionImages = ["/image/onion.png", "/image/cutOnion.png"];
 
 const Game = () => {
 
     const [step, setStep] = useState("potatoMsg");
 
-    const [count, setCount] = useState(0)
-    //10回押したとわかりやすくするためにおいてるけど、かなやさんが作業終わったらけしてもらっていいです
-
     const [cutIndex, setCutIndex] = useState(0);
+
     const [mixCount, setMixCount] = useState(0);
+    //10回押したら
 
 
     const handle = () => {
-        const newCount = count + 1;
-
-
         if (step === "potatoMsg") {
             setStep("cutPotatoMsg");
+
         } else if (step === "cutPotatoMsg") {
             setStep("potatoCut");
+            setCutIndex(0);
             //じゃがいも
+
         } else if (step === "potatoCut") {
-            setStep("carrotMsg");
+            if (cutIndex < potatoImages.length - 1) {
+                setCutIndex((prev) => prev + 1);
+            } else {
+                // 最後まで行った → にんじんメッセージへ
+                setStep("carrotMsg");
+                setCutIndex(0);
+            }
             //にんじん
+
         } else if (step === "carrotMsg") {
             setStep("cutCarrotMsg");
+
         } else if (step === "cutCarrotMsg") {
             setStep("carrotCut");
+            setCutIndex(0);
+
         } else if (step === "carrotCut") {
-            setStep("meatCutMsg");
+            if (cutIndex < carrotImages.length - 1) {
+                setCutIndex((prev) => prev + 1);
+            } else {
+                // 最後まで行った → お肉メッセージへ
+                setStep("meatMsg");
+                setCutIndex(0);
+            }
             //お肉
+        } else if (step === "meatMsg") {
+            setStep("cutMeatMsg");
+
         } else if (step === "cutMeatMsg") {
             setStep("meatCut");
+            setCutIndex(0);
+
         } else if (step === "meatCut") {
-            setStep("onionMsg");
+            if (cutIndex < meatImages.length - 1) {
+                setCutIndex((prev) => prev + 1);
+            } else {
+                setStep("onionMsg");
+                setCutIndex(0);
+            }
             //タマネギ
+        } else if (step === "onionMsg") {
+            setStep("cutOnionMsg");
+
         } else if (step === "cutOnionMsg") {
             setStep("onionCut");
+            setCutIndex(0);
 
             //混ぜる画面
-        } else if (step === "potatoCut") {
-            setStep("mixMsg");
+        } else if (step === "onionCut") {
+            if (cutIndex < onionImages.length - 1) {
+                setCutIndex((prev) => prev + 1);
+            } else {
+                // 切り終わったら混ぜるメッセージへ
+                setStep("mixMsg");
+                setCutIndex(0);
+            }
+
         } else if (step === "mixMsg") {
             setStep("mix");
             setMixCount(0);
+
         } else if (step === "mix") {
-            setCount(newCount);
-            if (newCount >= 10) {
+            const next = mixCount + 1;
+            setMixCount(next);
+            if (next >= 10) {
                 setStep("flipMsg");
             }
 
@@ -110,6 +133,17 @@ const Game = () => {
             return;
         }
     };
+
+    const currentCutImage =
+        step === "potatoCut"
+            ? potatoImages[cutIndex]
+            : step === "carrotCut"
+                ? carrotImages[cutIndex]
+                : step === "meatCut"
+                    ? meatImages[cutIndex]
+                    : step === "onionCut"
+                        ? onionImages[cutIndex]
+                        : "";
 
 
     return (
@@ -153,13 +187,6 @@ const Game = () => {
                             alt="じゃがいもが半分の料理写真"
                         />}
 
-                        {step === "potatoCut" && <Cut
-                            src="/image/potato.png"
-                            width={450}
-                            height={250}
-                            alt="じゃがいも"
-                        />}
-
                         {step === "carrotMsg" && <Message
                             title="にんじんをきろう！"
                             src="/image/Me_potato.png"
@@ -176,17 +203,11 @@ const Game = () => {
                             alt="にんじんが半分の料理写真"
                         />}
 
-                        {step === "carrotCut" && <Cut
-                            src="/image/carrot.png"
-                            width={450}
-                            height={250}
-                            alt="にんじん"
-                        />}
 
                         {/* お肉 */}
                         {step === "meatMsg" && <Message
                             title="お肉をきろう！"
-                            src="/image/Me_potato.png"
+                            src="/image/Me_meat.png"
                             width={400}
                             height={190}
                             alt="お肉の料理写真"
@@ -200,12 +221,7 @@ const Game = () => {
                             alt="お肉が半分の料理写真"
                         />}
 
-                        {step === "meatCut" && <Cut
-                            src="/image/meat.png"
-                            width={450}
-                            height={250}
-                            alt="お肉"
-                        />}
+
                         {/* たまねぎ */}
                         {step === "onionMsg" && <Message
                             title="たまねぎをきろう！"
@@ -223,12 +239,19 @@ const Game = () => {
                             alt="たまねぎが半分の料理写真"
                         />}
 
-                        {step === "onionCut" && <Cut
-                            src="/image/onion.png"
-                            width={450}
-                            height={250}
-                            alt="たまねぎ"
-                        />}
+                        {(step === "potatoCut" ||
+                            step === "carrotCut" ||
+                            step === "meatCut" ||
+                            step === "onionCut") &&
+                            currentCutImage && (
+                                <Cut
+                                    src={currentCutImage}
+                                    width={450}
+                                    height={250}
+                                    alt="きる食材"
+                                />
+                            )}
+
 
                         {step === "mixMsg" && <Mix
 
@@ -246,7 +269,7 @@ const Game = () => {
                         {step === "finish" && <p>ゲーム完了！ (成功と失敗のページ切り替えをここで出来てるように) <Link href="/">戻る</Link > </p>}
 
                         {step !== "finish" && (
-                            <button onClick={handle} className={styles.click}>クリック回数{count}</button>
+                            <button onClick={handle} className={styles.click}>クリック</button>
                         )}
                     </div>
                 </div>
