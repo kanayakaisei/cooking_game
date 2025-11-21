@@ -42,6 +42,7 @@ const Game = () => {
 
     const [mixCount, setMixCount] = useState(0);
     //10回押したら
+    const [mixPos, setMixPos] = useState(0);
 
 
     const handle = () => {
@@ -118,9 +119,12 @@ const Game = () => {
         } else if (step === "mix") {
             const next = mixCount + 1;
             setMixCount(next);
+            setMixPos((prev) => (prev + 1) % 2);
+
             if (next >= 10) {
                 setStep("flipMsg");
             }
+
 
             //ひっくり返す画面
         } else if (step === "flipMsg") {
@@ -255,10 +259,10 @@ const Game = () => {
 
                         {step === "mixMsg" && <Mix
 
-
                         />}
 
                         {step === "mix" && <Mix
+                            position={mixPos}
 
                         />}
 
