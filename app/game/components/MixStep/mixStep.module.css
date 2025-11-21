@@ -3,12 +3,24 @@
 }
 
 
-.pot {}
-
 
 .ladle {
     position: absolute;
+    transition: transform 0.3s ease;
+
+}
+
+.pos1 {
     right: -26%;
     bottom: 12%;
+}
 
+.pos2 {
+    right: 24%;
+    bottom: 45%;
+
+}
+
+.mixButton {
+    position: absolute;
 }
