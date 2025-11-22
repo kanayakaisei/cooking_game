@@ -58,7 +58,6 @@ const Game = () => {
             if (cutIndex < potatoImages.length - 1) {
                 setCutIndex((prev) => prev + 1);
             } else {
-                // 最後まで行った → にんじんメッセージへ
                 setStep("carrotMsg");
                 setCutIndex(0);
             }
@@ -75,7 +74,6 @@ const Game = () => {
             if (cutIndex < carrotImages.length - 1) {
                 setCutIndex((prev) => prev + 1);
             } else {
-                // 最後まで行った → お肉メッセージへ
                 setStep("meatMsg");
                 setCutIndex(0);
             }
@@ -107,7 +105,6 @@ const Game = () => {
             if (cutIndex < onionImages.length - 1) {
                 setCutIndex((prev) => prev + 1);
             } else {
-                // 切り終わったら混ぜるメッセージへ
                 setStep("mixMsg");
                 setCutIndex(0);
             }
