@@ -35,7 +35,7 @@ const Game = () => {
     return (
         <>
             <div className={styles.mainVisual}>
-                <div className={styles.Wrapper}>
+                <div className={styles.wrapper}>
                     <div className={styles.titleWrap}>
                         <button className={styles.circle}>
                             <Image
