@@ -1,10 +1,8 @@
-body{
-    background: rgb(91, 122, 180);
+.title {
+    color: rgb(189, 25, 25);
 }
-.title{
+
+.explanation {
     color: white;
-}
-.explanation{
-    color: white;
-    
+
 }

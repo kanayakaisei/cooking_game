@@ -1,0 +1,52 @@
+.mixWrap{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.imageWrap {
+    position: relative;
+}
+
+.ladle {
+    position: absolute;
+}
+
+.pos1 {
+    right: 10%;
+    bottom: 45%;
+}
+
+.pos2 {
+    right: 40%;
+    bottom: 45%;
+
+}
+
+.mixButton {
+    position: absolute;
+}
+
+.gauge {
+    width: 500px;
+    height: 28px;
+    border: 2px solid #4a77f1;
+    border-radius: 30px;
+    margin: 20px auto;
+    overflow: hidden;
+    background: #fff;
+}
+
+.gaugeFill {
+    height: 100%;
+    background: #4a77f1;
+    width: 0;
+    transition: width 0.3s linear;
+}
+
+.gaugeText {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 4px;
+    color: #333;
+}

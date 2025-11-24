@@ -5,40 +5,40 @@
     overflow: hidden;
 }
 
-.wrapper {
+.Wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 330px;
+    gap: 270px;
 }
 
 .titleWrap {
     position: relative;
     width: 1000px;
     height: 100px;
-    margin: 100px auto 0;   
-    display: flex;
-    align-items: center;
+    margin: 100px auto 0;
 }
 
 .circle {
     position: absolute;
-    left: 0.8%;
-    width: 100px;
-    height: 100px;
+    top: 8px;
+    left: 10px;
+    width: 90px;
+    height: 90px;
     background: #fff;
     border-radius: 50%;
     border: 0.5px solid #a7a7a7;
     filter: drop-shadow(4px 4px 4px rgba(0, 0, 0, 0.25));
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .title {
     position: relative;
     font-size: 48px;
     text-align: center;
-    height: 100px;
-    width: 1000px;
     line-height: 100px;
     border-radius: 60px;
     border: 3px solid #45886A;
@@ -58,7 +58,19 @@
             0 100%);
 }
 
+.illustWrap {
+    display: flex;
+}
+
+.chara {
+    position: absolute;
+    top: 70%;
+    left: 10%;
+    z-index: 1;
+}
+
+
 .click {
-    position: relative;
-    top: -100px;
+    position: absolute;
+    left: 200px;
 }

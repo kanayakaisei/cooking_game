@@ -1,30 +1,31 @@
 import styles from "./cutStep.module.css";
 import Image from "next/image";
 
-const Cut = () => {
+type Props = {
+    src: string
+    alt: string
+    width: number
+    height: number
+}
+
+
+const Cut = ({ src, width, height, alt }: Props) => {
     return (
         <>
 
             <div className={styles.imageWrap}>
                 <Image
-                    src="/image/chara.png"
-                    width={200}
-                    height={214}
-                    alt="キャラクター"
-                    className={styles.chara}
-                ></Image >
-                <Image
-                    src="/image/Group78.png"
+                    src="/image/cutBoard.png"
                     width={840}
                     height={280}
                     alt="まないた"
                     className={styles.cutBoard}
                 ></Image >
                 <Image
-                    src="/image/potato.png"
-                    width={450}
-                    height={250}
-                    alt="じゃがいも"
+                    src={src}
+                    alt={alt}
+                    width={width}
+                    height={height}
                     className={styles.potato}
                 ></Image >
                 <Image
@@ -35,9 +36,8 @@ const Cut = () => {
                     className={styles.knife}
                 ></Image>
             </div>
-
         </>
     )
-}
+};
 
 export default Cut;
