@@ -35,11 +35,8 @@ const meatImages = ["/image/meat.png", "/image/cutMeat.png"];
 const onionImages = ["/image/onion.png", "/image/cutOnion.png"];
 
 const Game = () => {
-
     const [step, setStep] = useState("potatoMsg");
-
     const [cutIndex, setCutIndex] = useState(0);
-
     const [mixCount, setMixCount] = useState(0);
     //10回押したら
     const [mixPos, setMixPos] = useState(0);
@@ -100,6 +97,7 @@ const Game = () => {
             setStep("onionCut");
             setCutIndex(0);
 
+
             //混ぜる画面
         } else if (step === "onionCut") {
             if (cutIndex < onionImages.length - 1) {
@@ -108,7 +106,6 @@ const Game = () => {
                 setStep("mixMsg");
                 setCutIndex(0);
             }
-
         } else if (step === "mixMsg") {
             setStep("mix");
             setMixCount(0);
@@ -118,11 +115,11 @@ const Game = () => {
             setMixCount(next);
             setMixPos((prev) => (prev + 1) % 2);
 
+
+
             if (next >= 10) {
                 setStep("flipMsg");
             }
-
-
             //ひっくり返す画面
         } else if (step === "flipMsg") {
             setStep("flip");
@@ -136,14 +133,10 @@ const Game = () => {
     };
 
     const currentCutImage =
-        step === "potatoCut"
-            ? potatoImages[cutIndex]
-            : step === "carrotCut"
-                ? carrotImages[cutIndex]
-                : step === "meatCut"
-                    ? meatImages[cutIndex]
-                    : step === "onionCut"
-                        ? onionImages[cutIndex]
+        step === "potatoCut" ? potatoImages[cutIndex]
+            : step === "carrotCut" ? carrotImages[cutIndex]
+                : step === "meatCut" ? meatImages[cutIndex]
+                    : step === "onionCut" ? onionImages[cutIndex]
                         : "";
 
 
@@ -253,18 +246,12 @@ const Game = () => {
                                 />
                             )}
 
-
-                        {step === "mixMsg" && <Mix
-
-                        />}
-
                         {step === "mix" && <Mix
                             position={mixPos}
-
+                            count={mixCount}
                         />}
 
                         {step === "flipMsg" && <Flip
-
                         />}
 
                         {step === "finish" && <p>ゲーム完了！ (成功と失敗のページ切り替えをここで出来てるように) <Link href="/">戻る</Link > </p>}
@@ -275,7 +262,6 @@ const Game = () => {
                     </div>
                 </div>
             </div >
-
         </>
     )
 }
