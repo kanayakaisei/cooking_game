@@ -8,7 +8,6 @@ import Cut from "./components/CutStep/CutStep";
 import Mix from "./components/MixStep/MixStep";
 import Flip from "./components/FlipStep/FlipStep";
 
-
 type Step =
     | "potatoMsg"
     | "cutPotatoMsg"
@@ -156,6 +155,7 @@ const Game = () => {
                         </button>
                         <h1 className={styles.title}>肉じゃが</h1>
                     </div>
+
                     <div className={styles.illustWrap}>
                         <Image
                             src="/image/chara.png"
@@ -258,6 +258,7 @@ const Game = () => {
 
                         {step !== "finish" && (
                             <button onClick={handle} className={styles.click}>クリック</button>
+
                         )}
                     </div>
                 </div>
