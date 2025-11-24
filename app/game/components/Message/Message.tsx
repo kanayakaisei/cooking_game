@@ -30,7 +30,7 @@ const Message = ({ title, src, width, height, alt }: Props) => {
                 <Image
                     src="/image/speechBubble.png"
                     width={740}
-                    height={400}
+                    height={440}
                     alt="吹き出し"
                     className={styles.speechBubble}
                 ></Image>

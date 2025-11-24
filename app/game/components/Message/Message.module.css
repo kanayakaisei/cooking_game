@@ -2,13 +2,13 @@
     position: absolute;
     top: 40%;
     right: 30%;
-
 }
 
 .messageWrap {
     display: flex;
     align-items: center;
     flex-direction: column;
+    gap: 30px;
 }
 
 .message {
