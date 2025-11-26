@@ -2,10 +2,11 @@
     position: relative;
 }
 
-.potato {
+.ingredients {
     position: absolute;
     bottom: 30%;
     left: 20%;
+    object-fit: contain;
 }
 
 .knife {
