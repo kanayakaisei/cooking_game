@@ -1,20 +1,45 @@
 "use client";
+import { useState, useEffect } from "react";
 import styles from "./mixStep.module.css";
 import Image from "next/image";
 
 type Props = {
-    position: number;
-    count: number;
-};
+    onComplete: () => void;
+}
 
-const Mix = ({ position, count }: Props) => {
-    const positionClass = [
-        styles.pos1,
-        styles.pos2,
-    ];
+const Mix = ({ onComplete }: Props) => {
+    const positionClass = [styles.pos1, styles.pos2]; //おたまcssスタイル
+    const [mixValue, setMixValue] = useState(0);
+    const [mixStep, setMixStep] = useState(0);
 
-    // ゲージ
-    const gauge = Math.min((count / 10) * 100, 100);
+    useEffect(() => {
+        const timer = setInterval(async () => {
+            try {
+                const mix = await fetch("https://click.ecc.ac.jp/ecc/kkanaya/works/2/Sizen/php/get_mix.php")
+                    .then(res => res.text());
+                const newValue = parseInt(mix) || 0;
+                if (newValue !== mixValue) {
+                    setMixStep(prev => prev + 1);
+                    setMixValue(newValue);
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }, 500);
+        return () => clearInterval(timer);
+    }, [mixValue]);
+
+    useEffect(() => {
+        if (mixStep >= 15) {
+            onComplete();
+        }
+    }, [mixStep]);
+
+    // 混ぜてるアニメーション（おたま）
+    const ladle = positionClass[mixStep % 2];
+
+    // ゲージの最大値：15
+    const gauge = Math.min((mixStep / 15) * 100, 100);
 
     return (
         <div className={styles.mixWrap}>
@@ -23,7 +48,7 @@ const Mix = ({ position, count }: Props) => {
                     src="/image/pot.png"
                     width={540}
                     height={330}
-                    alt="なべ"
+                    alt="鍋"
                     className={styles.pot}
                 />
 
@@ -32,7 +57,7 @@ const Mix = ({ position, count }: Props) => {
                     width={190}
                     height={330}
                     alt="おたま"
-                    className={`${styles.ladle} ${positionClass[position]}`}
+                    className={`${styles.ladle} ${ladle}`}
                 />
             </div>
 
