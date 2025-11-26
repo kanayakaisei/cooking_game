@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
@@ -39,6 +39,29 @@ const Game = () => {
     const [mixCount, setMixCount] = useState(0);
     //10回押したら
     const [mixPos, setMixPos] = useState(0);
+
+    // meshデータ
+    const [countCut, setCountCut] = useState(0);
+    const [countMix, setCountMix] = useState(0);
+    const [countFlip, setCountFlip] = useState(0);
+
+    useEffect(() => {
+        const timer = setInterval(async () => {
+            try {
+                const [cut, mix, flip] = await Promise.all([
+                    fetch("https://click.ecc.ac.jp/ecc/kkanaya/works/2/Sizen/php/get_cut.php").then(res => res.text()),
+                    fetch("https://click.ecc.ac.jp/ecc/kkanaya/works/2/Sizen/php/get_mix.php").then(res => res.text()),
+                    fetch("https://click.ecc.ac.jp/ecc/kkanaya/works/2/Sizen/php/get_flip.php").then(res => res.text()),
+                ]);
+                setCountCut(parseInt(cut, 10) || 0);
+                setCountMix(parseInt(mix, 10) || 0);
+                setCountFlip(parseInt(flip, 10) || 0);
+            } catch (e) {
+                console.error(e);
+            }
+        }, 1000);
+        return () => clearInterval(timer);
+    }, []);
 
 
     const handle = () => {
@@ -258,11 +281,15 @@ const Game = () => {
 
                         {step !== "finish" && (
                             <button onClick={handle} className={styles.click}>クリック</button>
-
                         )}
                     </div>
                 </div>
             </div >
+            <div className={styles.count}>
+                <p>カット回数:{countCut}</p>
+                <p>混ぜた回数:{countMix}</p>
+                <p>ひっくり回数:{countFlip}</p>
+            </div>
         </>
     )
 }
