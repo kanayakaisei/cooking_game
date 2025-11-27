@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import styles from "./flipStep.module.css";
 import Image from "next/image";
 
 type Props = {
@@ -37,12 +38,28 @@ const Flip = ({ onComplete }: Props) => {
     }, [isAfter]);
 
     return (
-        <Image
-            src={isAfter ? "/image/frypan_flip.png" : "/image/frypan.png"}
-            width={260}
-            height={400}
-            alt="フライパン"
-        />
+        <>
+            {/* <Image
+                src={isAfter ? "/image/frypan_flip.png" : "/image/frypan.png"}
+                width={260}
+                height={400}
+                alt="フライパン"
+            /> */}
+            <Image
+                src="/image/dish.png"
+                width={437}
+                height={349}
+                alt="皿"
+                className={styles.dish}
+            />
+            <Image
+                src={isAfter ? "/image/ladle_flip_after.png" : "/image/ladle_flip.png"}
+                width={300}
+                height={333}
+                alt="おたま"
+                className={styles.ladle}
+            />
+        </>
     );
 };
 
