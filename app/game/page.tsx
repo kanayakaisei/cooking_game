@@ -7,6 +7,7 @@ import Message from "./components/Message/Message";
 import Cut from "./components/CutStep/CutStep";
 import Mix from "./components/MixStep/MixStep";
 import Flip from "./components/FlipStep/FlipStep";
+import Complete from "./components/Complete/Complete";
 
 
 const Game = () => {
@@ -39,7 +40,7 @@ const Game = () => {
                         {step === 0 && <Cut onComplete={() => setStep(1)} />}
                         {step === 1 && <Mix onComplete={() => setStep(2)} />}
                         {step === 2 && <Flip onComplete={() => setStep(3)} />}
-                        {step >= 3 && <p>料理完成！<Link href="/">トップへ</Link ></p>}
+                        {step >= 3 && <Complete />}
                     </div>
                 </div>
             </div >

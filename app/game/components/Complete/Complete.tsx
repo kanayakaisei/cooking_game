@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import styles from "./cutStep.module.css";
+import styles from "./complete.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,10 +9,10 @@ const Complete = () => {
     return (
         <>
             <div className={styles.completeTitle}>
-                <h1>完成！！</h1>
+                <h1>かんせい</h1>
             </div>
             <Image
-                src="/image/mete_potato.png"
+                src="/image/meat_potato.png"
                 width={435}
                 height={357}
                 alt="肉じゃが"
