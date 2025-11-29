@@ -1,8 +1,27 @@
+import styles from "./page.module.css";
+import Image from "next/image";
+
+
+
 const Select = () => {
     return (
-        <div>
-            <h1>キャラ選択画面</h1>
-        </div>
+        <>
+
+            <div className={styles.mainVisual}>
+                <div className={styles.titleWrap}>
+                    <button className={styles.circle}>
+                        <Image
+                            src="/image/arrow.png"
+                            width={80}
+                            height={80}
+                            alt="矢印"
+                            className={styles.arrow}
+                        />
+                    </button>
+                    <h1 className={styles.title}>キャラクターせんたく</h1>
+                </div>
+            </div>
+        </>
     )
 }
 
