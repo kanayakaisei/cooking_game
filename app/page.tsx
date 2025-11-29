@@ -10,6 +10,7 @@ export default function Home() {
         <li>
           <Link href="/result"> resultページへ</Link>
           <Link href="/select"> selectページへ</Link>
+          <Link href="/cookingList"> 料理一覧ページへ</Link>
           <Link href="/login"> ログインページへ</Link>
           <Link href="/game"> ゲームページへ</Link>
         </li>
