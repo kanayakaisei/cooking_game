@@ -31,7 +31,7 @@ const Game = () => {
 
                     <div className={styles.illustWrap}>
                         <Image
-                            src="/image/chara.png"
+                            src="/image/mouse.png"
                             width={200}
                             height={214}
                             alt="キャラクター"
