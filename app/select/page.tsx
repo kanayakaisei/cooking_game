@@ -1,5 +1,7 @@
+import React from 'react';
 import styles from "./page.module.css";
 import Image from "next/image";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
 
 
 
@@ -23,28 +25,28 @@ const Select = () => {
                 <div className={styles.content}>
                     <div className={styles.charaScroll}>
                         <Image
-                            src="/image/chara.png"
+                            src="/image/mouse.png"
                             width={300}
                             height={320}
                             alt="ねずみのキャラクター"
                         ></Image>
                         <Image
-                            src="/image/chara.png"
+                            src="/image/penguin.png"
                             width={300}
                             height={320}
-                            alt="ねずみのキャラクター"
+                            alt="ペンギンのキャラクター"
                         ></Image>
                         <Image
-                            src="/image/chara.png"
+                            src="/image/tiger.png"
                             width={300}
                             height={320}
-                            alt="ねずみのキャラクター"
+                            alt="トラのキャラクター"
                         ></Image>
                         <Image
-                            src="/image/chara.png"
+                            src="/image/cat.png"
                             width={300}
                             height={320}
-                            alt="ねずみのキャラクター"
+                            alt="ねこのキャラクター"
                         ></Image>
                     </div>
                 </div>
