@@ -20,6 +20,42 @@ const Select = () => {
                     </button>
                     <h1 className={styles.title}>キャラクターせんたく</h1>
                 </div>
+                <div className={styles.content}>
+                    <div className={styles.charaScroll}>
+                        <Image
+                            src="/image/chara.png"
+                            width={300}
+                            height={320}
+                            alt="ねずみのキャラクター"
+                        ></Image>
+                        <Image
+                            src="/image/chara.png"
+                            width={300}
+                            height={320}
+                            alt="ねずみのキャラクター"
+                        ></Image>
+                        <Image
+                            src="/image/chara.png"
+                            width={300}
+                            height={320}
+                            alt="ねずみのキャラクター"
+                        ></Image>
+                        <Image
+                            src="/image/chara.png"
+                            width={300}
+                            height={320}
+                            alt="ねずみのキャラクター"
+                        ></Image>
+                    </div>
+                </div>
+                <div className={styles.block}>
+                    <p className={styles.subMeg}>だれといっしょにおりょうりする？</p>
+                    <button className={styles.startBtn}>
+                        <p>りょうりかいし！</p>
+                    </button>
+                </div>
+
+
             </div>
         </>
     )
