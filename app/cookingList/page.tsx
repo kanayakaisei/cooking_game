@@ -1,7 +1,7 @@
 const Select = () => {
     return (
         <div>
-            <h1>キャラ選択画面</h1>
+            <h1>料理一覧画面</h1>
         </div>
     )
 }
