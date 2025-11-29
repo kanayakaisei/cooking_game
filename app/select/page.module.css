@@ -58,20 +58,18 @@
 }
 
 .charaScroll {
-    max-width: 960px;
+    max-width: 1000px;
     margin: auto;
-    height: 420px;
 }
 
 .charaScroll :global(.splide__slide img) {
     transition: transform 0.3s ease;
-    transform: scale(0.8);
-    opacity: 0.6;
+    transform: scale(0.5);
+
 }
 
 .charaScroll :global(.splide__slide.is-active img) {
-    transform: scale(1.1);
-    opacity: 1;
+    transform: scale(1);
 }
 
 
