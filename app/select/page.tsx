@@ -28,12 +28,13 @@ const Select = () => {
                     <div className={styles.charaScroll}>
                         <Splide
                             options={{
-                                type: "loop",   // or "loop" どっちでもOK（後で説明）
-                                perPage: 3,      // 1画面に3キャラ表示
-                                perMove: 1,      // 1キャラずつスライド
+                                type: "loop",
+                                perPage: 3,
+                                perMove: 1,
                                 focus: "center",
                                 arrows: true,
                                 pagination: false,
+
                             }}
                         >
 
