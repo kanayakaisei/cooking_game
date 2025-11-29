@@ -51,9 +51,30 @@
             0 100%);
 }
 
+.content {
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.charaScroll {
+    max-width: 960px;
+    margin: auto;
+}
+
+.charaScroll :global(.splide__slide img) {
+    transition: transform 0.3s ease;
+    transform: scale(0.8);
+    opacity: 0.6;
+}
+
+.charaScroll :global(.splide__slide.is-active img) {
+    transform: scale(1.1);
+    opacity: 1;
+}
+
 .block {
     margin-top: 50px;
-    /*  あとで外す　とりあえずつける */
     text-align: center;
 
 }

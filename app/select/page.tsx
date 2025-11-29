@@ -1,14 +1,15 @@
-import React from 'react';
+"use client";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
 import styles from "./page.module.css";
 import Image from "next/image";
-import { Splide, SplideSlide } from '@splidejs/react-splide';
+
 
 
 
 const Select = () => {
     return (
         <>
-
             <div className={styles.mainVisual}>
                 <div className={styles.titleWrap}>
                     <button className={styles.circle}>
@@ -22,33 +23,55 @@ const Select = () => {
                     </button>
                     <h1 className={styles.title}>キャラクターせんたく</h1>
                 </div>
+
                 <div className={styles.content}>
                     <div className={styles.charaScroll}>
-                        <Image
-                            src="/image/mouse.png"
-                            width={300}
-                            height={320}
-                            alt="ねずみのキャラクター"
-                        ></Image>
-                        <Image
-                            src="/image/penguin.png"
-                            width={300}
-                            height={320}
-                            alt="ペンギンのキャラクター"
-                        ></Image>
-                        <Image
-                            src="/image/tiger.png"
-                            width={300}
-                            height={320}
-                            alt="トラのキャラクター"
-                        ></Image>
-                        <Image
-                            src="/image/cat.png"
-                            width={300}
-                            height={320}
-                            alt="ねこのキャラクター"
-                        ></Image>
+                        <Splide
+                            options={{
+                                type: "loop",   // or "loop" どっちでもOK（後で説明）
+                                perPage: 3,      // 1画面に3キャラ表示
+                                perMove: 1,      // 1キャラずつスライド
+                                focus: "center",
+                                arrows: true,
+                                pagination: false,
+                            }}
+                        >
+
+                            <SplideSlide>
+                                <Image
+                                    src="/image/mouse.png"
+                                    width={300}
+                                    height={320}
+                                    alt="ねずみのキャラクター"
+                                ></Image>
+                            </SplideSlide>
+                            <SplideSlide>
+                                <Image
+                                    src="/image/penguin.png"
+                                    width={300}
+                                    height={320}
+                                    alt="ペンギンのキャラクター"
+                                ></Image>
+                            </SplideSlide>
+                            <SplideSlide>
+                                <Image
+                                    src="/image/tiger.png"
+                                    width={300}
+                                    height={320}
+                                    alt="トラのキャラクター"
+                                ></Image>
+                            </SplideSlide>
+                            <SplideSlide>
+                                <Image
+                                    src="/image/cat.png"
+                                    width={300}
+                                    height={320}
+                                    alt="ねこのキャラクター"
+                                ></Image>
+                            </SplideSlide>
+                        </Splide>
                     </div>
+
                 </div>
                 <div className={styles.block}>
                     <p className={styles.subMeg}>だれといっしょにおりょうりする？</p>
@@ -58,7 +81,7 @@ const Select = () => {
                 </div>
 
 
-            </div>
+            </div >
         </>
     )
 }
