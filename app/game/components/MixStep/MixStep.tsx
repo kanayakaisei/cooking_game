@@ -45,7 +45,7 @@ const Mix = ({ onComplete }: Props) => {
         <div className={styles.mixWrap}>
             <div className={styles.imageWrap}>
                 <Image
-                    src="/image/pot.png"
+                    src="/image/potato_pot.png"
                     width={540}
                     height={330}
                     alt="鍋"

@@ -24,15 +24,15 @@ const cookingImages: CutStep = {
         },
         {
             before: ["/image/meat.png"],
-            after: ["/image/meat_cut.png"],
+            after: ["/image/meat_cutting.png"],
         },
         {
             before: ["/image/onion.png"],
-            after: ["/image/onion_cut.png"],
+            after: ["/image/onion_cutting.png"],
         },
         {
             before: ["/image/carrot.png"],
-            after: ["/image/carrot_cut.png"],
+            after: ["/image/carrot_cutting.png"],
         },
     ],
 };
@@ -74,6 +74,7 @@ const Cut = ({ onComplete }: Props) => {
             <div className={styles.imageWrap}>
                 {ingredient ? (
                     <Image
+                        // src={after ? ingredient.after[0] : ingredient.before[0]}
                         src={after ? ingredient.after[0] : ingredient.before[0]}
                         width={495}
                         height={251}
