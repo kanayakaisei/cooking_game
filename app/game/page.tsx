@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Image from "next/image";
-import Link from "next/link";
 import Message from "./components/Message/Message";
 import Cut from "./components/CutStep/CutStep";
 import Mix from "./components/MixStep/MixStep";
