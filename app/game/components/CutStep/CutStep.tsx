@@ -4,8 +4,7 @@ import styles from "./cutStep.module.css";
 import Image from "next/image";
 
 type CutImage = {
-    before: string[];
-    after: string[];
+    steps: string[];
 };
 
 type CutStep = {
@@ -19,20 +18,39 @@ type Props = {
 const cookingImages: CutStep = {
     cut: [
         {
-            before: ["/image/potato.png"],
-            after: ["/image/potato_cut.png"],
+            steps: [
+                "/image/ingredients/potato_1.png",
+                "/image/ingredients/potato_2.png",
+                "/image/ingredients/potato_3.png",
+                "/image/ingredients/potato_4.png"
+            ]
         },
         {
-            before: ["/image/meat.png"],
-            after: ["/image/meat_cutting.png"],
+            steps: [
+                "/image/ingredients/meat_1.png",
+                "/image/ingredients/meat_2.png",
+                "/image/ingredients/meat_3.png",
+                "/image/ingredients/meat_4.png",
+                "/image/ingredients/meat_5.png"
+            ]
         },
         {
-            before: ["/image/onion.png"],
-            after: ["/image/onion_cutting.png"],
+            steps: [
+                "/image/ingredients/onion_1.png",
+                "/image/ingredients/onion_2.png",
+                "/image/ingredients/onion_3.png",
+                "/image/ingredients/onion_4.png",
+                "/image/ingredients/onion_5.png"
+            ]
         },
         {
-            before: ["/image/carrot.png"],
-            after: ["/image/carrot_cutting.png"],
+            steps: [
+                "/image/ingredients/carrot_1.png",
+                "/image/ingredients/carrot_2.png",
+                "/image/ingredients/carrot_3.png",
+                "/image/ingredients/carrot_4.png",
+                "/image/ingredients/carrot_5.png"
+            ]
         },
     ],
 };
@@ -40,6 +58,7 @@ const cookingImages: CutStep = {
 const Cut = ({ onComplete }: Props) => {
     const [imageStep, setStep] = useState(0);
     const [cutCount, setCount] = useState(0);
+    const totalSteps = cookingImages.cut.reduce((sum, item) => sum + item.steps.length, 0);
 
     useEffect(() => {
         const timer = setInterval(async () => {
@@ -60,22 +79,28 @@ const Cut = ({ onComplete }: Props) => {
     }, [cutCount]);
 
     useEffect(() => {
-        if (imageStep >= 8) {
-            onComplete();
+        if (imageStep >= totalSteps) {
+            onComplete(); //全て終わったら呼び出す
         }
     }, [imageStep]);
 
-    const ingredientIndex = Math.floor(imageStep / 2);
-    const after = imageStep % 2 === 1;
-    const ingredient = cookingImages.cut[ingredientIndex];
+    let stepRemaining = imageStep;
+    let currentIngredientIndex = 0;
 
+    while (stepRemaining >= cookingImages.cut[currentIngredientIndex].steps.length) {
+        stepRemaining -= cookingImages.cut[currentIngredientIndex].steps.length;
+        currentIngredientIndex++;
+        // 範囲外なら終了
+        if (currentIngredientIndex >= cookingImages.cut.length) break;
+    }
+
+    const ingredient = cookingImages.cut[currentIngredientIndex];
     return (
         <>
             <div className={styles.imageWrap}>
                 {ingredient ? (
                     <Image
-                        // src={after ? ingredient.after[0] : ingredient.before[0]}
-                        src={after ? ingredient.after[0] : ingredient.before[0]}
+                        src={ingredient.steps[stepRemaining]}
                         width={495}
                         height={251}
                         alt="食材"
