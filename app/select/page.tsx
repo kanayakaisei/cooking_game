@@ -3,9 +3,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import styles from "./page.module.css";
 import Image from "next/image";
-
-
-
+import Link from "next/link";
 
 const Select = () => {
     return (
@@ -40,7 +38,7 @@ const Select = () => {
 
                             <SplideSlide>
                                 <Image
-                                    src="/image/mouse.png"
+                                    src="/image/mouse.svg"
                                     width={300}
                                     height={320}
                                     alt="ねずみのキャラクター"
@@ -48,7 +46,7 @@ const Select = () => {
                             </SplideSlide>
                             <SplideSlide>
                                 <Image
-                                    src="/image/penguin.png"
+                                    src="/image/penguin.svg"
                                     width={300}
                                     height={320}
                                     alt="ペンギンのキャラクター"
@@ -56,7 +54,7 @@ const Select = () => {
                             </SplideSlide>
                             <SplideSlide>
                                 <Image
-                                    src="/image/tiger.png"
+                                    src="/image/tiger.svg"
                                     width={300}
                                     height={320}
                                     alt="トラのキャラクター"
@@ -64,7 +62,7 @@ const Select = () => {
                             </SplideSlide>
                             <SplideSlide>
                                 <Image
-                                    src="/image/cat.png"
+                                    src="/image/cat.svg"
                                     width={300}
                                     height={320}
                                     alt="ねこのキャラクター"
@@ -76,13 +74,13 @@ const Select = () => {
                 </div>
                 <div className={styles.block}>
                     <p className={styles.subMeg}>だれといっしょにおりょうりする？</p>
-                    <button className={styles.startBtn}>
-                        <p>りょうりかいし！</p>
-                    </button>
+                    <Link href="/game">
+                        <button className={styles.startBtn}>
+                            <p>りょうりかいし！</p>
+                        </button>
+                    </Link>
                 </div>
-
-
-            </div >
+            </div>
         </>
     )
 }
