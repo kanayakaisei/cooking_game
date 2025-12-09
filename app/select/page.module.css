@@ -84,20 +84,3 @@
     font-size: 24px;
     margin-bottom: 15px;
 }
-
-.startBtn {
-    width: 500px;
-    height: 80px;
-    border: none;
-    border-radius: 10px;
-    background: linear-gradient(90deg, #F2B873 0%, #FBCE99 100%);
-
-    p {
-        color: #FFF;
-        -webkit-text-stroke-width: 2px;
-        -webkit-text-stroke-color: #D7801A;
-        font-family: Inter;
-        font-size: 32px;
-        font-weight: bold;
-    }
-}

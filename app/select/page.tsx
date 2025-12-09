@@ -1,11 +1,17 @@
 "use client";
+import { useState } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Link from "next/link";
+import GameStartBtn from "@/components/GameStartBtn/GameStartBtn";
 
 const Select = () => {
+    const [isPlaying, setIsPlaying] = useState(false);
+
+
+
     return (
         <>
             <div className={styles.mainVisual}>
@@ -75,9 +81,13 @@ const Select = () => {
                 <div className={styles.block}>
                     <p className={styles.subMeg}>だれといっしょにおりょうりする？</p>
                     <Link href="/game">
-                        <button className={styles.startBtn}>
-                            <p>りょうりかいし！</p>
-                        </button>
+                        <GameStartBtn
+                            text={"りょうりかいし！"}
+                            isPlaying={isPlaying}
+                            onToggle={setIsPlaying}
+                            className={styles.selectBtn}
+
+                        />
                     </Link>
                 </div>
             </div>

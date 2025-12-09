@@ -4,8 +4,12 @@ import styles from "./complete.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
+import GameStartBtn from "@/components/GameStartBtn/GameStartBtn";
+
 
 const Complete = () => {
+    const [isPlaying, setIsPlaying] = useState(true);
+
     return (
         <>
             <div className={styles.completeTitle}>
@@ -18,7 +22,14 @@ const Complete = () => {
                 alt="肉じゃが"
                 className={styles.mete_potato}
             />
-            <Link href="/">トップへ</Link >
+            <Link href="/">
+                <GameStartBtn
+                    text={"しゅうりょうする！"}
+                    isPlaying={isPlaying}
+                    onToggle={setIsPlaying}
+                    className={styles.completeBtn}
+                />
+            </Link >
         </>
     )
 }
