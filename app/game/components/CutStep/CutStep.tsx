@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./cutStep.module.css";
 import Image from "next/image";
 
@@ -59,8 +59,9 @@ const Cut = ({ onComplete }: Props) => {
     const [imageStep, setStep] = useState(0);
     const [cutCount, setCount] = useState(0);
     const [updateTime, setUpdateTime] = useState(0);
-
     const totalSteps = cookingImages.cut.reduce((sum, item) => sum + item.steps.length, 0);
+
+    const cutSound = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
         const timer = setInterval(async () => {
@@ -87,9 +88,18 @@ const Cut = ({ onComplete }: Props) => {
         return () => clearInterval(timer);
     }, [cutCount, updateTime]);
 
+    // Cut音追加/音量調整
     useEffect(() => {
-        if (imageStep >= totalSteps) {
-            onComplete();
+        cutSound.current = new Audio("/sounds/cut.mp3");
+        cutSound.current.volume = 1;
+    }, [])
+
+    useEffect(() => {
+        if (imageStep > 0 && imageStep < totalSteps) {
+            if (cutSound.current) {
+                cutSound.current.currentTime = 0;
+                cutSound.current.play().catch(() => { });
+            }
         }
     }, [imageStep]);
 
