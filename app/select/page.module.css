@@ -84,3 +84,42 @@
     font-size: 24px;
     margin-bottom: 15px;
 }
+
+
+.startOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(3, 3, 3, 0.7);
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+}
+
+
+.startTitle {
+    display: flex;
+    gap: 14px;
+    font-size: 110px;
+    font-weight: bold;
+}
+
+.char {
+    display: inline-block;
+    color: #fff;
+    -webkit-text-stroke-width: 5px;
+    -webkit-text-stroke-color: #DB4B4B;
+    text-shadow: 1px 4px 5px rgba(255, 10, 10, 0.5);
+    animation: pop 0.35s ease-out both;
+    animation-delay: calc(var(--i) * 0.03s);
+}
+
+@keyframes pop {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

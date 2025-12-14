@@ -1,22 +1,30 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import styles from "./page.module.css";
 import Image from "next/image";
-import Link from "next/link";
 import GameStartBtn from "@/components/GameStartBtn/GameStartBtn";
 
 const Select = () => {
-    const charaList = [
-        "/image/mouse.svg",
-        "/image/penguin.svg",
-        "/image/tiger.svg",
-        "/image/cat.svg",
-    ];
-    const [selectChara, setSelectChara] = useState(charaList[0]);
+
+    const router = useRouter();
 
     const [isPlaying, setIsPlaying] = useState(false);
+
+    const [isStarting, setIsStarting] = useState(false);
+
+    const handleStart = () => {
+        if (isStarting) return;
+        setIsStarting(true);
+
+
+        window.setTimeout(() => {
+            router.push("/game");
+        }, 1500);
+    };
+
 
     return (
         <>
@@ -85,19 +93,31 @@ const Select = () => {
                             </SplideSlide>
                         </Splide>
                     </div>
-
                 </div>
                 <div className={styles.block}>
                     <p className={styles.subMeg}>だれといっしょにおりょうりする？</p>
-                    <Link href={`/game?chara=${selectChara}`}>
-                        <GameStartBtn
-                            text={"りょうりかいし！"}
-                            isPlaying={isPlaying}
-                            onToggle={setIsPlaying}
-                            className={styles.selectBtn}
-                        />
-                    </Link>
+
+                    <GameStartBtn
+                        text={"りょうりかいし！"}
+                        isPlaying={isPlaying}
+                        onToggle={setIsPlaying}
+                        className={styles.selectBtn}
+                        onClick={handleStart}
+                        disabled={isStarting} />
+                    {isStarting && (
+                        <div className={styles.startOverlay}>
+                            <p className={styles.startTitle} aria-label="りょうりかいし！">
+                                {"りょうりかいし！".split("").map((ch, i) => (
+                                    <span key={i} className={styles.char} style={{ ["--i" as any]: i }}>
+                                        {ch}
+                                    </span>
+                                ))}
+                            </p>
+                        </div>
+                    )}
+
                 </div>
+
             </div>
         </>
     )
