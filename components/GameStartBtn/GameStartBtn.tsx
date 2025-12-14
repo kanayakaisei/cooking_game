@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import styles from "./GameStartBtn.module.css";
-import { playBgm, stopBgm } from "@/app/lib/bgmPlayer";
+import { playBgm, stopBgm } from "@/lib/bgmPlayer";
 
 
 

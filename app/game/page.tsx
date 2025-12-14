@@ -1,5 +1,6 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Message from "./components/Message/Message";
@@ -11,6 +12,11 @@ import Complete from "./components/Complete/Complete";
 
 const Game = () => {
     const [step, setStep] = useState(0);
+
+    // キャラクター指定
+    const params = useSearchParams();
+    const chara = params.get("chara") || "/image/mouse.svg";
+
     return (
         <>
             <div className={styles.mainVisual}>
@@ -30,7 +36,7 @@ const Game = () => {
 
                     <div className={styles.illustWrap}>
                         <Image
-                            src="/image/mouse.svg"
+                            src={chara}
                             width={200}
                             height={214}
                             alt="キャラクター"

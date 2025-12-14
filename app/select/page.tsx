@@ -8,9 +8,15 @@ import Link from "next/link";
 import GameStartBtn from "@/components/GameStartBtn/GameStartBtn";
 
 const Select = () => {
+    const charaList = [
+        "/image/mouse.svg",
+        "/image/penguin.svg",
+        "/image/tiger.svg",
+        "/image/cat.svg",
+    ];
+    const [selectChara, setSelectChara] = useState(charaList[0]);
+
     const [isPlaying, setIsPlaying] = useState(false);
-
-
 
     return (
         <>
@@ -38,7 +44,10 @@ const Select = () => {
                                 focus: "center",
                                 arrows: true,
                                 pagination: false,
-
+                            }}
+                            onMoved={(splide) => {
+                                const index = splide.index; // 真ん中のスライド index
+                                setSelectChara(charaList[index]);
                             }}
                         >
 
@@ -80,13 +89,12 @@ const Select = () => {
                 </div>
                 <div className={styles.block}>
                     <p className={styles.subMeg}>だれといっしょにおりょうりする？</p>
-                    <Link href="/game">
+                    <Link href={`/game?chara=${selectChara}`}>
                         <GameStartBtn
                             text={"りょうりかいし！"}
                             isPlaying={isPlaying}
                             onToggle={setIsPlaying}
                             className={styles.selectBtn}
-
                         />
                     </Link>
                 </div>
