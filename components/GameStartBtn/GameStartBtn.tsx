@@ -3,18 +3,17 @@ import { useEffect } from "react";
 import styles from "./GameStartBtn.module.css";
 import { playBgm, stopBgm } from "@/lib/bgmPlayer";
 
-
-
 type Btn = {
     text: string;
     isPlaying: boolean;
     onToggle: (next: boolean) => void;
     className?: string;
+    onClick?: () => void;
+    disabled?: boolean;
 }
 
-const GameStartBtn = ({ text, isPlaying, onToggle, className }: Btn) => {
+const GameStartBtn = ({ text, isPlaying, onToggle, className, onClick, disabled }: Btn) => {
 
-    // isPlaying が変わったら BGM を ON/OFF
     useEffect(() => {
         if (isPlaying) {
             playBgm();
@@ -25,6 +24,7 @@ const GameStartBtn = ({ text, isPlaying, onToggle, className }: Btn) => {
 
     const handleClick = () => {
         onToggle(!isPlaying);
+        onClick?.();
     };
 
 
@@ -32,6 +32,7 @@ const GameStartBtn = ({ text, isPlaying, onToggle, className }: Btn) => {
         <>
             <button onClick={handleClick}
                 className={`${styles.startBtn} ${className ?? ""}`}
+                disabled={disabled}
             >
                 <p>{text}</p>
             </button >
