@@ -14,15 +14,14 @@ type Btn = {
 
 const GameStartBtn = ({ text, isPlaying, onToggle, className, onClick, disabled }: Btn) => {
 
+
     useEffect(() => {
-        if (isPlaying) {
-            playBgm();
-        } else {
-            stopBgm();
-        }
+        if (isPlaying) playBgm();
+        else stopBgm();
     }, [isPlaying]);
 
     const handleClick = () => {
+        if (disabled) return;
         onToggle(!isPlaying);
         onClick?.();
     };
@@ -30,7 +29,9 @@ const GameStartBtn = ({ text, isPlaying, onToggle, className, onClick, disabled 
 
     return (
         <>
-            <button onClick={handleClick}
+            <button
+                type="button"
+                onClick={handleClick}
                 className={`${styles.startBtn} ${className ?? ""}`}
                 disabled={disabled}
             >
