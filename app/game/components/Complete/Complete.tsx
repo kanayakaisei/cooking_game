@@ -12,24 +12,32 @@ const Complete = () => {
 
     return (
         <>
-            <div className={styles.completeTitle}>
-                <h1>かんせい</h1>
-            </div>
-            <Image
-                src="/image/meat_potato.png"
-                width={435}
-                height={357}
-                alt="肉じゃが"
-                className={styles.mete_potato}
-            />
-            <Link href="/">
-                <GameStartBtn
-                    text={"しゅうりょうする！"}
-                    isPlaying={isPlaying}
-                    onToggle={setIsPlaying}
-                    className={styles.completeBtn}
+            <div className={styles.container}>
+                <div className={styles.title}>
+                    <Image
+                        src="/image/Completed.png"
+                        width={860}
+                        height={480}
+                        alt="かんせいタイトル"
+                    />
+                </div>
+                <Image
+                    src="/image/meat_potato.png"
+                    width={435}
+                    height={357}
+                    alt="肉じゃが"
                 />
-            </Link >
+            </div>
+            <div className={styles.completeBtn}>
+                <Link href="/">
+                    <GameStartBtn
+                        text={"しゅうりょうする！"}
+                        isPlaying={isPlaying}
+                        onToggle={setIsPlaying}
+                        variant="end"
+                    />
+                </Link >
+            </div >
         </>
     )
 }

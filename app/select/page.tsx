@@ -108,7 +108,7 @@ const Select = () => {
                         text={"りょうりかいし！"}
                         isPlaying={isPlaying}
                         onToggle={setIsPlaying}
-                        className={styles.selectBtn}
+                        variant="start"
                         onClick={handleStart}
                         disabled={isStarting} />
                     {isStarting && (

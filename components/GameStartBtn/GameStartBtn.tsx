@@ -7,12 +7,12 @@ type Btn = {
     text: string;
     isPlaying: boolean;
     onToggle: (next: boolean) => void;
-    className?: string;
+    variant?: "start" | "end";
     onClick?: () => void;
     disabled?: boolean;
 }
 
-const GameStartBtn = ({ text, isPlaying, onToggle, className, onClick, disabled }: Btn) => {
+const GameStartBtn = ({ text, isPlaying, onToggle, variant = "start", onClick, disabled }: Btn) => {
 
 
     useEffect(() => {
@@ -32,7 +32,11 @@ const GameStartBtn = ({ text, isPlaying, onToggle, className, onClick, disabled 
             <button
                 type="button"
                 onClick={handleClick}
-                className={`${styles.startBtn} ${className ?? ""}`}
+                className={
+                    variant === "start"
+                        ? styles.startBtn
+                        : styles.endBtn
+                }
                 disabled={disabled}
             >
                 <p>{text}</p>

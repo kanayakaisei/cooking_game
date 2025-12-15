@@ -17,18 +17,31 @@
 
 .endBtn {
     width: 200px;
-    height: 50px;
+    height: 60px;
     border: none;
     border-radius: 10px;
-    background: #ff7a7a;
+    background: #ff977a;
+    animation: FloatVertical 1.3s infinite;
 
     p {
         color: #FFF;
-        -webkit-text-stroke-width: 2px;
-        -webkit-text-stroke-color: #a32c3c;
         font-family: Inter;
-        font-size: 12px;
+        font-size: 19px;
         font-weight: bold;
     }
+}
 
+@keyframes FloatVertical {
+    0% {
+        transform: scale(1);
+    }
+
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }

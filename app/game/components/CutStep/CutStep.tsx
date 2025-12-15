@@ -74,7 +74,7 @@ const Cut = ({ onComplete }: Props) => {
                 if (newValue !== cutCount) {
                     const now = Date.now();
                     // 2秒(2000ms)経っていない場合は画像を進めない
-                    if (now - updateTime >= 2000) {
+                    if (now - updateTime >= 100) {
                         setStep(prev => prev + 1);
                         setUpdateTime(now); // 時刻を更新
                     }
@@ -83,7 +83,7 @@ const Cut = ({ onComplete }: Props) => {
             } catch (e) {
                 console.error(e);
             }
-        }, 1000);
+        }, 500);
 
         return () => clearInterval(timer);
     }, [cutCount, updateTime]);
@@ -101,6 +101,9 @@ const Cut = ({ onComplete }: Props) => {
                 cutSound.current.play().catch(() => { });
             }
         }
+        if (imageStep >= totalSteps) {
+            onComplete(); //全て終わったら呼び出す
+        }
     }, [imageStep]);
 
     let remaining = imageStep;
@@ -117,7 +120,7 @@ const Cut = ({ onComplete }: Props) => {
     return (
         <>
             <div className={styles.imageWrap}>
-                {ingredient ? (
+                {ingredient && (
                     <Image
                         src={ingredient.steps[remaining]}
                         width={495}
@@ -125,8 +128,6 @@ const Cut = ({ onComplete }: Props) => {
                         alt="食材"
                         className={styles.ingredients}
                     />
-                ) : (
-                    <p>成功！</p>
                 )}
                 <Image src="/image/cutBoard.png" width={840} height={280} alt="まないた" className={styles.cutBoard} />
                 <Image src="/image/knife.png" width={220} height={420} alt="包丁" className={styles.knife} />
