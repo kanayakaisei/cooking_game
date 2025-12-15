@@ -8,6 +8,13 @@ import Image from "next/image";
 import GameStartBtn from "@/components/GameStartBtn/GameStartBtn";
 
 const Select = () => {
+    const charaList = [
+        "/image/mouse.svg",
+        "/image/penguin.svg",
+        "/image/tiger.svg",
+        "/image/cat.svg",
+    ];
+    const [selectChara, setSelectChara] = useState(charaList[0]);
 
     const router = useRouter();
 
@@ -21,7 +28,7 @@ const Select = () => {
 
 
         window.setTimeout(() => {
-            router.push("/game");
+            router.push(`/game?chara=${encodeURIComponent(selectChara)}`);
         }, 1500);
     };
 
@@ -97,7 +104,7 @@ const Select = () => {
                         text={"りょうりかいし！"}
                         isPlaying={isPlaying}
                         onToggle={setIsPlaying}
-                        className={styles.selectBtn}
+                        variant="start"
                         onClick={handleStart}
                         disabled={isStarting} />
                     {isStarting && (

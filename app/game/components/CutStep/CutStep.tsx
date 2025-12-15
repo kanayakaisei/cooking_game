@@ -83,7 +83,7 @@ const Cut = ({ onComplete }: Props) => {
             } catch (e) {
                 console.error(e);
             }
-        }, 1000);
+        }, 500);
 
         return () => clearInterval(timer);
     }, [cutCount, updateTime]);
