@@ -53,10 +53,6 @@ const Select = () => {
                                 arrows: true,
                                 pagination: false,
                             }}
-                            onMoved={(splide) => {
-                                const index = splide.index; // 真ん中のスライド index
-                                setSelectChara(charaList[index]);
-                            }}
                         >
 
                             <SplideSlide>
