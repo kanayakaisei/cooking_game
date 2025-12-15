@@ -1,31 +1,15 @@
 .mixWrap{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.imageWrap {
     position: relative;
 }
 
-.ladle {
+.contents{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     position: absolute;
-}
-
-.pos1 {
-    right: 10%;
-    bottom: 45%;
-}
-
-.pos2 {
-    right: 40%;
-    bottom: 45%;
-
-}
-
-.mixButton {
-    position: absolute;
-}
+    top: -240px;
+    transform: translateX(-50%);
+    }
 
 .gauge {
     width: 500px;
