@@ -59,6 +59,7 @@ const Cut = ({ onComplete }: Props) => {
     const [imageStep, setStep] = useState(0);
     const [cutCount, setCount] = useState(0);
     const [updateTime, setUpdateTime] = useState(0);
+    const [knifeActive, setKnifeActive] = useState(false);
     const totalSteps = cookingImages.cut.reduce((sum, item) => sum + item.steps.length, 0);
 
     const cutSound = useRef<HTMLAudioElement | null>(null);
@@ -74,7 +75,7 @@ const Cut = ({ onComplete }: Props) => {
                 if (newValue !== cutCount) {
                     const now = Date.now();
                     // 1.5秒経っていない場合は画像を進めない
-                    if (now - updateTime >= 1500) {
+                    if (now - updateTime >= 800) {
                         setStep(prev => prev + 1);
                         setUpdateTime(now); // 時刻を更新
                     }
@@ -96,13 +97,21 @@ const Cut = ({ onComplete }: Props) => {
 
     useEffect(() => {
         if (imageStep > 0 && imageStep < totalSteps) {
+            // 効果音
             if (cutSound.current) {
                 cutSound.current.currentTime = 0;
                 cutSound.current.play().catch(() => { });
             }
+            // 包丁アニメーションON
+            setKnifeActive(true);
+            // アニメーション終了後にOFF（再トリガー用）
+            const timer = setTimeout(() => {
+                setKnifeActive(false);
+            }, 300); // CSSのanimation時間と合わせる
+            return () => clearTimeout(timer);
         }
         if (imageStep >= totalSteps) {
-            onComplete(); //全て終わったら呼び出す
+            onComplete();
         }
     }, [imageStep]);
 
@@ -129,8 +138,20 @@ const Cut = ({ onComplete }: Props) => {
                         className={styles.ingredients}
                     />
                 )}
-                <Image src="/image/cutBoard.png" width={840} height={280} alt="まないた" className={styles.cutBoard} />
-                <Image src="/image/knife.png" width={220} height={420} alt="包丁" className={styles.knife} />
+                <Image
+                    src="/image/cutBoard.png"
+                    width={840}
+                    height={280}
+                    alt="まないた"
+                    className={styles.cutBoard}
+                />
+                <Image
+                    src="/image/knife.png"
+                    width={220}
+                    height={420}
+                    alt="包丁"
+                    className={`${styles.knife} ${knifeActive ? styles.knifeActive : ""}`}
+                />
             </div>
         </>
     );

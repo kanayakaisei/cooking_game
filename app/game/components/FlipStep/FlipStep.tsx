@@ -33,18 +33,12 @@ const Flip = ({ onComplete }: Props) => {
         if (!isAfter) return;
         const timeout = setTimeout(() => {
             onComplete();
-        }, 5000);
+        }, 2000);
         return () => clearTimeout(timeout);
     }, [isAfter]);
 
     return (
         <>
-            {/* <Image
-                src={isAfter ? "/image/frypan_flip.png" : "/image/frypan.png"}
-                width={260}
-                height={400}
-                alt="フライパン"
-            /> */}
             <Image
                 src="/image/dish.png"
                 width={437}
@@ -53,11 +47,18 @@ const Flip = ({ onComplete }: Props) => {
                 className={styles.dish}
             />
             <Image
-                src={isAfter ? "/image/ladle_flip_after.png" : "/image/ladle_flip.png"}
-                width={300}
-                height={333}
+                src={isAfter ? "/image/ladle_flip_after1.png" : "/image/ladle_flip.png"}
+                width={320}
+                height={353}
                 alt="おたま"
                 className={styles.ladle}
+            />
+            <Image
+                src="/image/pot_flip1.png"
+                width={508}
+                height={307}
+                alt="肉じゃがを皿に移すときの鍋"
+                className={styles.pot_flip}
             />
         </>
     );
