@@ -37,8 +37,8 @@ const Game = () => {
                     <div className={styles.illustWrap}>
                         <Image
                             src={chara}
-                            width={200}
-                            height={214}
+                            width={260}
+                            height={274}
                             alt="キャラクター"
                             className={styles.chara}
                         ></Image >

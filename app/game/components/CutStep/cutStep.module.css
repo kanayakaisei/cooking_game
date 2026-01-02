@@ -16,6 +16,24 @@
 
 .knife {
     position: absolute;
-    right: -6%;
-    bottom: -20%;
+    right: -10%;
+    top: -80px;
+    transform-origin: bottom center;
+}
+
+
+.knifeActive {
+    animation: cutMotion 0.3s ease-in-out;
+}
+
+@keyframes cutMotion {
+    0% {
+        transform: rotate(0deg) translateY(0);
+    }
+    50% {
+        transform: rotate(-25deg) translateY(20px);
+    }
+    100% {
+        transform: rotate(0deg) translateY(0);
+    }
 }
