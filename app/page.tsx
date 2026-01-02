@@ -1,16 +1,62 @@
 import styles from "./page.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>トップページ</h1>
-      <p className={styles.explanation}>子供が遊ぶ料理ゲーム</p>
+    <div className={styles.mainVisual}>
+      <h1 className={styles.logo}>
+        <Image
+          src="/image/logo.svg"
+          alt="ロゴ"
+          width={1023}
+          height={412}
+        />
+      </h1>
+      <div className={styles.btnWrap}>
+        <Link href="/cookingList">
+          <button className={styles.startBtn}>
+            スタート！
+          </button>
+        </Link>
+      </div>
+
+      <div className={styles.animal}>
+        <Image
+          className={styles.penguin}
+          src="/image/mainVisual_penguin.svg"
+          alt="ぺんぎん"
+          width={371}
+          height={464}
+        />
+        <Image
+          className={styles.mouse}
+          src="/image/mainVisual_mouse.svg"
+          alt="ねずみ"
+          width={420}
+          height={440}
+        />
+        <Image
+          className={styles.tiger}
+          src="/image/mainVisual_tiger.svg"
+          alt="とら"
+          width={357}
+          height={450}
+        />
+        <Image
+          className={styles.cat}
+          src="/image/mainVisual_cat.svg"
+          alt="ねこ"
+          width={381}
+          height={474}
+        />
+
+
+      </div>
       <ul>
         <li>
           <Link href="/result"> resultページへ</Link>
           <Link href="/select"> selectページへ</Link>
-          <Link href="/cookingList"> 料理一覧ページへ</Link>
           <Link href="/login"> ログインページへ</Link>
           <Link href="/game"> ゲームページへ</Link>
         </li>
