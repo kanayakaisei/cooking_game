@@ -8,6 +8,7 @@ import Cut from "./components/CutStep/CutStep";
 import Mix from "./components/MixStep/MixStep";
 import Flip from "./components/FlipStep/FlipStep";
 import Complete from "./components/Complete/Complete";
+import Heading from "@/components/Heading/Heading";
 
 
 const Game = () => {
@@ -21,19 +22,7 @@ const Game = () => {
         <>
             <div className={styles.mainVisual}>
                 <div className={styles.Wrapper}>
-                    <div className={styles.titleWrap}>
-                        <button className={styles.circle}>
-                            <Image
-                                src="/image/arrow.png"
-                                width={80}
-                                height={80}
-                                alt="矢印"
-                                className={styles.arrow}
-                            />
-                        </button>
-                        <h1 className={styles.title}>肉じゃが</h1>
-                    </div>
-
+                    <Heading text="肉じゃが" />
                     <div className={styles.illustWrap}>
                         <Image
                             src={chara}
