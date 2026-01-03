@@ -9,15 +9,13 @@ export default function Home() {
         <Image
           src="/image/logo.svg"
           alt="ロゴ"
-          width={1023}
-          height={412}
+          width={1100}
+          height={510}
         />
       </h1>
       <div className={styles.btnWrap}>
-        <Link href="/cookingList">
-          <button className={styles.startBtn}>
-            スタート！
-          </button>
+        <Link href="/cookingList" className={styles.startBtn}>
+          スタート
         </Link>
       </div>
 
@@ -40,8 +38,8 @@ export default function Home() {
           className={styles.tiger}
           src="/image/mainVisual_tiger.svg"
           alt="とら"
-          width={357}
-          height={450}
+          width={377}
+          height={470}
         />
         <Image
           className={styles.cat}
