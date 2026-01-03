@@ -1,0 +1,21 @@
+.cardWrap{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 35px 30px;
+    background: #F8F8F8;
+    margin: 20px;
+
+    h3{
+        font-size: 32px;
+    }
+}
