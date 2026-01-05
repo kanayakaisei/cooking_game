@@ -1,14 +1,14 @@
 import styles from "./page.module.css";
 import Image from "next/image";
 import Heading from "@/components/Heading/Heading";
-import List from "@/lib/cookingList";
+import Detail from "@/lib/detail";
 
-const Select = () => {
+const List = () => {
     return (
-        <div>
+        <div className={styles.contentsWrap}>
             <Heading text="レシピいちらん" />
             <div className={styles.cardWrap}>
-                {List.map((list) => (
+                {Detail.map((list) => (
                     <article key={list.id} className={styles.card}>
                         <h3>{list.title}</h3>
                         <div className={styles.imageWrap}>
@@ -37,4 +37,4 @@ const Select = () => {
     )
 }
 
-export default Select;
+export default List;
