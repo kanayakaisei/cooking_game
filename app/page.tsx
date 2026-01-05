@@ -7,7 +7,7 @@ export default function Home() {
     <div className={styles.mainVisual}>
       <h1 className={styles.logo}>
         <Image
-          src="/image/logo.svg"
+          src="/image/top/logo.svg"
           alt="ロゴ"
           width={1100}
           height={510}
@@ -22,28 +22,28 @@ export default function Home() {
       <div className={styles.animal}>
         <Image
           className={styles.penguin}
-          src="/image/mainVisual_penguin.svg"
+          src="/image/top/mainVisual_penguin.svg"
           alt="ぺんぎん"
           width={371}
           height={464}
         />
         <Image
           className={styles.mouse}
-          src="/image/mainVisual_mouse.svg"
+          src="/image/top/mainVisual_mouse.svg"
           alt="ねずみ"
           width={420}
           height={440}
         />
         <Image
           className={styles.tiger}
-          src="/image/mainVisual_tiger.svg"
+          src="/image/top/mainVisual_tiger.svg"
           alt="とら"
           width={377}
           height={470}
         />
         <Image
           className={styles.cat}
-          src="/image/mainVisual_cat.svg"
+          src="/image/top/mainVisual_cat.svg"
           alt="ねこ"
           width={381}
           height={474}

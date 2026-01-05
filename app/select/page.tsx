@@ -53,7 +53,7 @@ const Select = () => {
 
                             <SplideSlide>
                                 <Image
-                                    src="/image/mouse.svg"
+                                    src="/image/select/mouse.svg"
                                     width={300}
                                     height={320}
                                     alt="ねずみのキャラクター"
@@ -61,7 +61,7 @@ const Select = () => {
                             </SplideSlide>
                             <SplideSlide>
                                 <Image
-                                    src="/image/penguin.svg"
+                                    src="/image/select/penguin.svg"
                                     width={300}
                                     height={320}
                                     alt="ペンギンのキャラクター"
@@ -69,7 +69,7 @@ const Select = () => {
                             </SplideSlide>
                             <SplideSlide>
                                 <Image
-                                    src="/image/tiger.svg"
+                                    src="/image/select/tiger.svg"
                                     width={300}
                                     height={320}
                                     alt="トラのキャラクター"
@@ -77,7 +77,7 @@ const Select = () => {
                             </SplideSlide>
                             <SplideSlide>
                                 <Image
-                                    src="/image/cat.svg"
+                                    src="/image/select/cat.svg"
                                     width={300}
                                     height={320}
                                     alt="ねこのキャラクター"

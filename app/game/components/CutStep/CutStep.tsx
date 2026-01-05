@@ -19,37 +19,37 @@ const cookingImages: CutStep = {
     cut: [
         {
             steps: [
-                "/image/potato_1.png",
-                "/image/potato_2.png",
-                "/image/potato_3.png",
-                "/image/potato_4.png"
+                "/image/game/ingredients/potato_1.png",
+                "/image/game/ingredients/potato_2.png",
+                "/image/game/ingredients/potato_3.png",
+                "/image/game/ingredients/potato_4.png"
             ]
         },
         {
             steps: [
-                "/image/meat_1.png",
-                "/image/meat_2.png",
-                "/image/meat_3.png",
-                "/image/meat_4.png",
-                "/image/meat_5.png"
+                "/image/game/ingredients/meat_1.png",
+                "/image/game/ingredients/meat_2.png",
+                "/image/game/ingredients/meat_3.png",
+                "/image/game/ingredients/meat_4.png",
+                "/image/game/ingredients/meat_5.png"
             ]
         },
         {
             steps: [
-                "/image/onion_1.png",
-                "/image/onion_2.png",
-                "/image/onion_3.png",
-                "/image/onion_4.png",
-                "/image/onion_5.png"
+                "/image/game/ingredients/onion_1.png",
+                "/image/game/ingredients/onion_2.png",
+                "/image/game/ingredients/onion_3.png",
+                "/image/game/ingredients/onion_4.png",
+                "/image/game/ingredients/onion_5.png"
             ]
         },
         {
             steps: [
-                "/image/carrot_1.png",
-                "/image/carrot_2.png",
-                "/image/carrot_3.png",
-                "/image/carrot_4.png",
-                "/image/carrot_5.png"
+                "/image/game/ingredients/carrot_1.png",
+                "/image/game/ingredients/carrot_2.png",
+                "/image/game/ingredients/carrot_3.png",
+                "/image/game/ingredients/carrot_4.png",
+                "/image/game/ingredients/carrot_5.png"
             ]
         }
     ],
