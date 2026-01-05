@@ -139,14 +139,14 @@ const Cut = ({ onComplete }: Props) => {
                     />
                 )}
                 <Image
-                    src="/image/cutBoard.png"
+                    src="/image/game/cutBoard.png"
                     width={840}
                     height={280}
                     alt="まないた"
                     className={styles.cutBoard}
                 />
                 <Image
-                    src="/image/knife.png"
+                    src="/image/game/knife.png"
                     width={220}
                     height={420}
                     alt="包丁"

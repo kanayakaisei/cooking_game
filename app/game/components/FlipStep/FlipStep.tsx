@@ -40,21 +40,21 @@ const Flip = ({ onComplete }: Props) => {
     return (
         <>
             <Image
-                src="/image/dish.png"
+                src="/image/game/dish.png"
                 width={437}
                 height={349}
                 alt="皿"
                 className={styles.dish}
             />
             <Image
-                src={isAfter ? "/image/ladle_flip_after1.png" : "/image/ladle_flip.png"}
+                src={isAfter ? "/image/game/ladle_flip_after1.png" : "/image/game/ladle_flip.png"}
                 width={320}
                 height={353}
                 alt="おたま"
                 className={styles.ladle}
             />
             <Image
-                src="/image/pot_flip1.png"
+                src="/image/game/pot_flip1.png"
                 width={508}
                 height={307}
                 alt="肉じゃがを皿に移すときの鍋"

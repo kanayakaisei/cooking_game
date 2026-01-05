@@ -11,7 +11,7 @@ const Heading = ({ text }: Props) => {
         <div className={styles.titleWrap}>
             <button className={styles.circle}>
                 <Image
-                    src="/image/arrow.png"
+                    src="/image/components/arrow.png"
                     width={80}
                     height={80}
                     alt="矢印"

@@ -8,7 +8,7 @@ type Props = {
 }
 
 const Mix = ({ onComplete }: Props) => {
-    const mixImg = ["/image/mix_step1.png", "/image/mix_step2.png", "/image/mix_step3.png"]
+    const mixImg = ["/image/game/mix_step1.png", "/image/game/mix_step2.png", "/image/game/mix_step3.png"]
     const [mixValue, setMixValue] = useState(0);
     const [mixStep, setMixStep] = useState(0);
     const mixSound = useRef<HTMLAudioElement | null>(null);
