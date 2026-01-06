@@ -10,10 +10,10 @@ import Heading from "@/components/Heading/Heading";
 
 const Select = () => {
     const charaList = [
-        "/image/mouse.svg",
-        "/image/penguin.svg",
-        "/image/tiger.svg",
-        "/image/cat.svg",
+        "/image/select/mouse.svg",
+        "/image/select/penguin.svg",
+        "/image/select/tiger.svg",
+        "/image/select/cat.svg",
     ];
     const [selectChara, setSelectChara] = useState(charaList[0]);
 

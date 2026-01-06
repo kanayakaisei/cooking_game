@@ -15,14 +15,14 @@ const Complete = () => {
             <div className={styles.container}>
                 <div className={styles.title}>
                     <Image
-                        src="/image/Completed.png"
+                        src="/image/game/Completed.png"
                         width={860}
                         height={480}
                         alt="かんせいタイトル"
                     />
                 </div>
                 <Image
-                    src="/image/meat_potato.png"
+                    src="/image/game/meat_potato.png"
                     width={435}
                     height={357}
                     alt="肉じゃが"

@@ -16,7 +16,7 @@ const Game = () => {
 
     // キャラクター指定
     const params = useSearchParams();
-    const chara = params.get("chara") || "/image/select/mouse.svg";
+    const chara = params.get("chara") || "/image/select/cat.svg";
 
     return (
         <>
