@@ -12,6 +12,12 @@
     margin: 100px auto;
 }
 
+.link{
+    text-decoration: none;
+    color: black;
+    font-size: 32px;
+}
+
 .card{
     display: flex;
     flex-direction: column;
@@ -23,11 +29,8 @@
     transition: 0.5s;
     opacity: 0;
     transform: scale(0.9);
-    animation: zoomIn 0.5s ease-out forwards;
+    animation: card_animation 0.5s ease-out forwards;
     
-    h3{
-        font-size: 32px;
-    }
 
     .ingredients{
         object-fit: contain;
@@ -42,7 +45,7 @@
     transition: 0.5s;
 }
 
-@keyframes zoomIn {
+@keyframes card_animation{
     to {
         opacity: 1;
         transform: scale(1);
