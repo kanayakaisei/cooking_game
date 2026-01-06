@@ -68,13 +68,6 @@ export default function Home() {
             height={514} />
         </div>
       </div>
-      <ul>
-        <li>
-          <Link href="/result"> resultページへ</Link>
-          <Link href="/select"> selectページへ</Link>
-          <Link href="/login"> ログインページへ</Link>
-        </li>
-      </ul>
     </div>
   );
 }
