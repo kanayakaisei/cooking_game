@@ -11,7 +11,24 @@
     top: 7%;
     left: 50%;
     transform: translateX(-50%);
+    animation: logo_animation 1.2s ease-out;
 }
+
+@keyframes logo_animation {
+    0% {
+        transform: translateX(-50%) scale(0);
+    }
+    60% {
+        transform: translateX(-50%) scale(1);
+    }
+    80% {
+        transform: translateX(-50%) scale(0.85);
+    }
+    100% {
+        transform: translateX(-50%) scale(1);
+    }
+}
+
 
 .btnWrap{
     position: absolute;
@@ -19,6 +36,7 @@
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
+    transition: 6s;
 }
 
 .startBtn{
@@ -33,24 +51,147 @@
     padding: 16px 40px;
     text-decoration: none;
 }
+.fadeIn {
+    animation: fadeUp 3s infinite, opacity 1.5s ease-out forwards;
+}
+
+.fadeIn:hover{
+    background-color: #ffffff;
+    border:3px solid #efc054;
+    color: #efc054;
+}
+
+@keyframes opacity {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes fadeUp {
+    0% {
+        transform:  scale(1);
+    }
+    25% {
+        transform:  scale(1.2);
+    }
+    50% {
+        transform:  scale(1);
+    }
+
+    75% {
+        transform:  scale(1.2);
+    }
+
+    100% {
+        transform:  scale(1);
+    }
+}
+
+
 
 .animal {
-    width: 100%;
     position: absolute;
     bottom: -20px;
+    width: 100%;
 
-    .mouse{
-        position: absolute;
-        bottom: -10px;
-        left: 17%;
+> div {
+    position: absolute;
+    animation-duration: 1.8s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+    will-change: transform, left, right, bottom;
+}
+
+.penguin {
+    left: -500px;
+    bottom: 0;
+    animation: penguin_in 1.8s ease-out 0.3s forwards;
+}
+
+.mouse {
+    bottom: -500px;
+    left: 17%;
+    animation: mouse_in 1.8s ease-out 0.9s forwards;
+}
+
+.tiger {
+    bottom: -500px;
+    right: 20%;
+    animation: tiger_in 1.8s ease-out 1.2s forwards;
+}
+
+.cat {
+    right: -500px;
+    bottom: 0;
+    animation: cat_in 1.8s ease-out 0.6s forwards;
+}
+}
+
+@keyframes penguin_in {
+    0% {
+        left: -400px;
+        bottom: -75px;
+        transform: scale(0.9);
     }
-    .tiger{
-        position: absolute;
-        bottom: -20px;
-        right: 20%;
+    60% {
+        left: -70px;
+        bottom: -75px;
+        transform: scale(1.1);
+
     }
-    .cat{
-        position: absolute;
-        right: 0;
+    100% {
+        left: -110px;
+        bottom: -75px;
+        transform: scale(1);
+    }
+}
+
+@keyframes mouse_in {
+    0% {
+        bottom: -400px;
+        transform: scale(0.7);
+    }
+    60% {
+        bottom: 0;
+        transform: scale(1.05);
+    }
+    100% {
+        bottom: -70px;
+        transform: scale(1);
+    }
+}
+
+@keyframes tiger_in {
+    0% {
+        bottom: -400px;
+        transform: scale(0.7);
+    }
+    60% {
+        bottom: -40px;
+        transform: scale(1.05);
+    }
+    100% {
+        bottom: -80px;
+        transform: scale(1);
+    }
+}
+
+@keyframes cat_in {
+    0% {
+        right: -300px;
+        bottom: -40px; 
+        transform: scale(1);
+    }
+    60% {
+        right: -70px;
+        bottom: -40px;
+        transform: scale(1.2);
+    }
+    100% {
+        right: -110px;
+        bottom: -40px;
+        transform: scale(1);
     }
 }

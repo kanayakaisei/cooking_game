@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "料理ゲーム",
+  title: "ちっちゃなコックさん",
   description: "子供向けの料理ゲーム",
 };
 
