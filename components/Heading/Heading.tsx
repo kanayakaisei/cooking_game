@@ -1,4 +1,5 @@
-import test from "node:test"
+"use client"
+import { useRouter } from "next/navigation";
 import styles from "./Heading.module.css"
 import Image from "next/image"
 
@@ -7,6 +8,8 @@ type Props = {
 }
 
 const Heading = ({ text }: Props) => {
+    const router = useRouter();
+
     return (
         <div className={styles.titleWrap}>
             <button className={styles.circle}>
@@ -16,7 +19,7 @@ const Heading = ({ text }: Props) => {
                     height={80}
                     alt="矢印"
                     className={styles.arrow}
-                />
+                    onClick={() => router.back()} />
             </button>
             <h1 className={styles.title}>{text}</h1>
         </div>
