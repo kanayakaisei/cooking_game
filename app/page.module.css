@@ -96,37 +96,37 @@
     bottom: -20px;
     width: 100%;
 
-> div {
-    position: absolute;
-    animation-duration: 1.8s;
-    animation-timing-function: ease-out;
-    animation-fill-mode: forwards;
-    will-change: transform, left, right, bottom;
-}
+    > div {
+        position: absolute;
+        animation-duration: 1.8s;
+        animation-timing-function: ease-out;
+        animation-fill-mode: forwards;
+        will-change: transform, left, right, bottom;
+    }
 
-.penguin {
-    left: -500px;
-    bottom: 0;
-    animation: penguin_in 1.8s ease-out 0.3s forwards;
-}
+    .penguin {
+        left: -500px;
+        bottom: 0;
+        animation: penguin_in 1.8s ease-out 0.3s forwards;
+    }
 
-.mouse {
-    bottom: -500px;
-    left: 17%;
-    animation: mouse_in 1.8s ease-out 0.9s forwards;
-}
+    .mouse {
+        bottom: -500px;
+        left: 17%;
+        animation: mouse_in 1.8s ease-out 0.9s forwards;
+    }
 
-.tiger {
-    bottom: -500px;
-    right: 20%;
-    animation: tiger_in 1.8s ease-out 1.2s forwards;
-}
+    .tiger {
+        bottom: -500px;
+        right: 20%;
+        animation: tiger_in 1.8s ease-out 1.2s forwards;
+    }
 
-.cat {
-    right: -500px;
-    bottom: 0;
-    animation: cat_in 1.8s ease-out 0.6s forwards;
-}
+    .cat {
+        right: -500px;
+        bottom: 0;
+        animation: cat_in 1.8s ease-out 0.6s forwards;
+    }
 }
 
 @keyframes penguin_in {

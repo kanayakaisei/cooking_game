@@ -1,9 +1,7 @@
-"use client";
+"use client"
 import { useState } from "react";
-import { useSearchParams } from "next/navigation";
 import styles from "./page.module.css";
 import Image from "next/image";
-import Message from "./components/Message/Message";
 import Cut from "./components/CutStep/CutStep";
 import Mix from "./components/MixStep/MixStep";
 import Flip from "./components/FlipStep/FlipStep";
@@ -15,8 +13,8 @@ const Game = () => {
     const [step, setStep] = useState(0);
 
     // キャラクター指定
-    const params = useSearchParams();
-    const chara = params.get("chara") || "/image/select/cat.svg";
+    // const params = useSearchParams();
+    // const chara = params.get("chara") || "/image/select/cat.svg";
 
     return (
         <>
@@ -25,7 +23,7 @@ const Game = () => {
                     <Heading text="肉じゃが" />
                     <div className={styles.illustWrap}>
                         <Image
-                            src={chara}
+                            src="/image/select/mouse.svg"
                             width={260}
                             height={274}
                             alt="キャラクター"
