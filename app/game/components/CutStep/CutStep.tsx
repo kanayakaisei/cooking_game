@@ -60,12 +60,15 @@ const Cut = ({ onComplete }: Props) => {
     const [cutCount, setCount] = useState(0);
     const [updateTime, setUpdateTime] = useState(0);
     const [knifeActive, setKnifeActive] = useState(false);
+    const [showComplete, setShowComplete] = useState(false);
+    const [isWaiting, setIsWaiting] = useState(false);
     const totalSteps = cookingImages.cut.reduce((sum, item) => sum + item.steps.length, 0);
 
     const cutSound = useRef<HTMLAudioElement | null>(null);
 
     useEffect(() => {
         const timer = setInterval(async () => {
+            if (isWaiting) return;
             try {
                 const data = await fetch("https://click.ecc.ac.jp/ecc/kkanaya/works/2/Sizen/php/get_cut.php")
                     .then(res => res.text());
@@ -85,9 +88,28 @@ const Cut = ({ onComplete }: Props) => {
                 console.error(e);
             }
         }, 500);
-
         return () => clearInterval(timer);
-    }, [cutCount, updateTime]);
+    }, [cutCount, updateTime, isWaiting]);
+
+    useEffect(() => {
+        if (isWaiting) return;
+        const ingredientSteps = cookingImages.cut[ingredientIndex]?.steps.length ?? 0;
+        // steps[] の最後に到達した瞬間
+        if (remaining === ingredientSteps - 1) {
+            setIsWaiting(true);
+            setShowComplete(true);
+
+            const timer = setTimeout(() => {
+                setShowComplete(false);
+                setIsWaiting(false);
+                setStep(prev => prev + 1);
+            }, 2000);
+            return () => clearTimeout(timer);
+        }
+        if (imageStep >= totalSteps) {
+            onComplete();
+        }
+    }, [imageStep]);
 
     // Cut音追加/音量調整
     useEffect(() => {
@@ -153,6 +175,11 @@ const Cut = ({ onComplete }: Props) => {
                     className={`${styles.knife} ${knifeActive ? styles.knifeActive : ""}`}
                 />
             </div>
+            {showComplete && (
+                <div className={styles.complete}>
+                    できた！
+                </div>
+            )}
         </>
     );
 };
