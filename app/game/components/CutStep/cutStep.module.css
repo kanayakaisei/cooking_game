@@ -37,3 +37,16 @@
         transform: rotate(0deg) translateY(0);
     }
 }
+
+.complete{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 64px;
+    display: inline-block;
+    font-weight: bold;
+    color: #fff;
+    -webkit-text-stroke-width: 2px;
+    -webkit-text-stroke-color: #DB4B4B;
+    text-shadow: 1px 1px 1px rgba(255, 10, 10, 0.5);
+}
