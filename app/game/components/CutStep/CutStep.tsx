@@ -149,7 +149,7 @@ const Cut = ({ onComplete }: Props) => {
     const ingredient = cookingImages.cut[ingredientIndex];
 
     return (
-        <>
+        <div className={styles.content}>
             <div className={styles.imageWrap}>
                 {ingredient && (
                     <Image
@@ -180,7 +180,7 @@ const Cut = ({ onComplete }: Props) => {
                     できた！
                 </div>
             )}
-        </>
+        </div>
     );
 };
 
