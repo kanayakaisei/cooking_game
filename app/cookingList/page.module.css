@@ -1,10 +1,10 @@
-.contentsWrap{
+.contentsWrap {
     width: 100%;
     background: repeat url(/image/background.svg) center center /cover;
     display: flow-root;
 }
 
-.cardWrap{
+.cardWrap {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
@@ -12,13 +12,13 @@
     margin: 100px auto;
 }
 
-.link{
+.link {
     text-decoration: none;
     color: black;
     font-size: 32px;
 }
 
-.card{
+.card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,9 +30,9 @@
     opacity: 0;
     transform: scale(0.9);
     animation: card_animation 0.5s ease-out forwards;
-    
 
-    .ingredients{
+
+    .ingredients {
         object-fit: contain;
         display: flex;
         justify-content: start;
@@ -40,12 +40,12 @@
     }
 }
 
-.card:hover{
-    box-shadow: 0 1px 10px rgba(0,0,0,20%) ;
+.card:hover {
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 20%);
     transition: 0.5s;
 }
 
-@keyframes card_animation{
+@keyframes card_animation {
     to {
         opacity: 1;
         transform: scale(1);
@@ -53,7 +53,18 @@
 }
 
 /* cardが増えたら足していく_+0.2 */
-.card:nth-child(1) { animation-delay: 0.3s; }
-.card:nth-child(2) { animation-delay: 0.5s; }
-.card:nth-child(3) { animation-delay: 0.7s; }
-.card:nth-child(4) { animation-delay: 0.9s; }
+.card:nth-child(1) {
+    animation-delay: 0.3s;
+}
+
+.card:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.card:nth-child(3) {
+    animation-delay: 0.7s;
+}
+
+.card:nth-child(4) {
+    animation-delay: 0.9s;
+}
