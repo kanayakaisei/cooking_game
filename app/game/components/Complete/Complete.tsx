@@ -29,7 +29,7 @@ const Complete = () => {
                 />
             </div>
             <div className={styles.completeBtn}>
-                <Link href="/select">
+                <Link href="/cookingList">
                     <GameStartBtn
                         text={"しゅうりょうする！"}
                         isPlaying={isPlaying}
