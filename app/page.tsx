@@ -3,9 +3,14 @@ import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { playStartBgm, stopStartBgm } from "@/lib/bgmPlayer";
 
 export default function Home() {
   const [start, setStart] = useState("");
+
+  useEffect(() => {
+    playStartBgm();
+  }, []);
 
   useEffect(() => {
     const time = setInterval(() => {
