@@ -30,7 +30,7 @@ const Select = () => {
 
         window.setTimeout(() => {
             router.push(`/game?chara=${encodeURIComponent(selectChara)}`);
-        }, 1500);
+        }, 1000);
     };
 
 
