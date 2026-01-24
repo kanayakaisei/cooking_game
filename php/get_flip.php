@@ -20,18 +20,6 @@ try {
     } else {
         echo "0";
     }
-
-
-    // // mesh_data_mix に保存
-    // $stmt2 = $pdo->prepare("INSERT INTO mesh_data_mix (count) VALUES (:count)");
-    // $stmt2->execute([':count' => $count]);
-
-    // // mesh_data_flip に保存
-    // $stmt3 = $pdo->prepare("INSERT INTO mesh_data_flip (count) VALUES (:count)");
-    // $stmt3->execute([':count' => $count]);
-
-    // var_dump($count);
-    // echo json_encode(["count" => (int)$count]);
 } catch (PDOException $e) {
     echo json_encode(["error" => $e->getMessage()]);
 }

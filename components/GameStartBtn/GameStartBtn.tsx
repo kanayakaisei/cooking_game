@@ -13,6 +13,19 @@ type Btn = {
 }
 
 const GameStartBtn = ({ text, isPlaying, onToggle, variant = "start", onClick, disabled }: Btn) => {
+    const reset = async () => {
+        try {
+            const res = await fetch(
+                "https://click.ecc.ac.jp/ecc/kkanaya/works/2/Sizen/php/reset.php",
+                {
+                    method: "POST",
+                }
+            );
+        }
+        catch (e) {
+            console.error(e);
+        }
+    }
 
 
     useEffect(() => {
@@ -20,9 +33,14 @@ const GameStartBtn = ({ text, isPlaying, onToggle, variant = "start", onClick, d
         else stopBgm();
     }, [isPlaying]);
 
-    const handleClick = () => {
+    const handleClick = async () => {
         if (disabled) return;
-        onToggle(!isPlaying);
+        const next = !isPlaying;
+        onToggle(next);
+
+        if (!next && variant === "end") {
+            await reset();
+        }
         onClick?.();
     };
 
