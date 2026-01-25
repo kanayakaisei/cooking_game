@@ -1,5 +1,6 @@
 "use client"
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import { useSearchParams } from "next/navigation";
 import styles from "./page.module.css";
 import Image from "next/image";
 import Cut from "./components/CutStep/CutStep";
@@ -8,13 +9,23 @@ import Flip from "./components/FlipStep/FlipStep";
 import Complete from "./components/Complete/Complete";
 import Heading from "@/components/Heading/Heading";
 
+const DEFAULT_CHARA = "/image/select/cat.svg";
 
-const Game = () => {
+const ALLOWED_CHARA = new Set([
+    "/image/select/mouse.svg",
+    "/image/select/penguin.svg",
+    "/image/select/tiger.svg",
+    "/image/select/cat.svg",
+]);
+
+function Game() {
     const [step, setStep] = useState(0);
+    const params = useSearchParams();
 
-    // キャラクター指定
-    // const params = useSearchParams();
-    // const chara = params.get("chara") || "/image/select/cat.svg";
+    const chara = useMemo(() => {
+        const raw = params.get("chara") || DEFAULT_CHARA;
+        return ALLOWED_CHARA.has(raw) ? raw : DEFAULT_CHARA;
+    }, [params]);
 
     return (
         <>
@@ -23,12 +34,13 @@ const Game = () => {
                     <Heading text="肉じゃが" />
                     <div className={styles.illustWrap}>
                         <Image
-                            src="/image/select/mouse.svg"
+                            src={chara}
                             width={260}
                             height={274}
                             alt="キャラクター"
-                            className={styles.chara}
-                        ></Image >
+                            className={styles.character}
+                            priority
+                        />
                         {step === 0 && <Cut onComplete={() => setStep(1)} />}
                         {step === 1 && <Mix onComplete={() => setStep(2)} />}
                         {step === 2 && <Flip onComplete={() => setStep(3)} />}
