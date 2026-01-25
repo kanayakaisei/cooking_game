@@ -3,14 +3,13 @@ import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
 import Image from "next/image";
-import { playStartBgm, stopStartBgm } from "@/lib/bgmPlayer";
+import { useRouter } from "next/navigation";
+import { playStartBgm } from "@/lib/bgmPlayer";
 
 export default function Home() {
-  const [start, setStart] = useState("");
+  const router = useRouter();
+  const [start, setStart] = useState(false);
 
-  useEffect(() => {
-    playStartBgm();
-  }, []);
 
   useEffect(() => {
     const time = setInterval(() => {
@@ -18,6 +17,12 @@ export default function Home() {
     }, 2000);
     return () => clearTimeout(time)
   }, [])
+
+  const handleStart = async () => {
+    await playStartBgm();
+
+    router.push("/cookingList");
+  };
 
   return (
     <div className={styles.mainVisual}>
@@ -31,12 +36,13 @@ export default function Home() {
       </h1>
       <div className={styles.btnWrap}>
         {start && (
-          <Link
-            href="/cookingList"
+          <button
+            type="button"
+            onClick={handleStart}
             className={`${styles.startBtn} ${styles.fadeIn}`}
           >
             <p>はじめる</p>
-          </Link>
+          </button>
         )}
       </div>
 
