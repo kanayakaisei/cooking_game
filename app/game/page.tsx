@@ -31,7 +31,7 @@ function Game() {
         <>
             <div className={styles.mainVisual}>
                 <div className={styles.Wrapper}>
-                    <Heading text="肉じゃが" />
+                    <Heading text="にくじゃが" />
                     <div className={styles.illustWrap}>
                         <Image
                             src={chara}

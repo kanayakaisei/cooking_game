@@ -4,16 +4,37 @@
     border: none;
     border-radius: 10px;
     background: linear-gradient(90deg, #F2B873 0%, #FBCE99 100%);
+    border: 3px solid #d58f49;
+    animation: size 1s ease-out;
 
     p {
         color: #FFF;
-        -webkit-text-stroke-width: 2px;
-        -webkit-text-stroke-color: #D7801A;
         font-family: Inter;
         font-size: 32px;
         font-weight: bold;
     }
+
+    &:hover {
+        background: #FFF;
+
+        p {
+            color: #F2B873;
+        }
+    }
 }
+
+@keyframes size {
+    0% {
+        transform: scale(0);
+    }
+
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
 
 .endBtn {
     width: 200px;
