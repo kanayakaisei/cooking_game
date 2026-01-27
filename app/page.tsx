@@ -13,8 +13,8 @@ export default function Home() {
 
   useEffect(() => {
     const time = setInterval(() => {
-      setStart("はじめる");
-    }, 2000);
+      setStart(true);
+    }, 1000);
     return () => clearTimeout(time)
   }, [])
 
@@ -30,8 +30,8 @@ export default function Home() {
         <Image
           src="/image/top/logo.svg"
           alt="ロゴ"
-          width={1100}
-          height={510}
+          width={940}
+          height={350}
         />
       </h1>
       <div className={styles.btnWrap}>
