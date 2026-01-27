@@ -1,7 +1,6 @@
 "use client"
 import { useState, useEffect } from "react";
 import styles from "./page.module.css";
-import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { playStartBgm } from "@/lib/bgmPlayer";
@@ -10,13 +9,12 @@ export default function Home() {
   const router = useRouter();
   const [start, setStart] = useState(false);
 
-
   useEffect(() => {
-    const time = setInterval(() => {
-      setStart("はじめる");
+    const timer = setTimeout(() => {
+      setStart(true);
     }, 2000);
-    return () => clearTimeout(time)
-  }, [])
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleStart = async () => {
     await playStartBgm();
