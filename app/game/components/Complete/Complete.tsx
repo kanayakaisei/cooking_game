@@ -56,7 +56,7 @@ const Complete = () => {
     }, [fireFromSides]);
 
     return (
-        <>
+        <div className={styles.wrapper}>
             <div className={styles.container}>
                 <div className={styles.title}>
                     <Image
@@ -83,7 +83,41 @@ const Complete = () => {
                     />
                 </Link >
             </div >
-        </>
+            <div className={styles.charaWrap}>
+                <div>
+                    <Image
+                        src="/image/game/chara/complete_mouse.svg"
+                        alt="完成ねずみ"
+                        width={324}
+                        height={368}
+                        className={styles.mouse}
+                    />
+                    <Image
+                        src="/image/game/chara/complete_penguin.svg"
+                        alt="完成ぺんぎん"
+                        width={324}
+                        height={368}
+                        className={styles.penguin}
+                    />
+                </div>
+                <div>
+                    <Image
+                        src="/image/game/chara/complete_tiger.svg"
+                        alt="完成とら"
+                        width={324}
+                        height={368}
+                        className={styles.tiger}
+                    />
+                    <Image
+                        src="/image/game/chara/complete_cat.svg"
+                        alt="完成ねこ"
+                        width={324}
+                        height={368}
+                        className={styles.cat}
+                    />
+                </div>
+            </div>
+        </div>
     )
 }
 
