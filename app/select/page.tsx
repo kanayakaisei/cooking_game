@@ -9,14 +9,17 @@ import Image from "next/image";
 import GameStartBtn from "@/components/GameStartBtn/GameStartBtn";
 import Heading from "@/components/Heading/Heading";
 
-const Select = () => {
-    const charaList = [
-        "/image/select/mouse.svg",
-        "/image/select/penguin.svg",
-        "/image/select/tiger.svg",
-        "/image/select/cat.svg",
-    ];
+const charaList = ["mouse", "penguin", "tiger", "cat"] as const;
+type CharaKey = typeof charaList[number];
 
+const charaImageMap: Record<CharaKey, string> = {
+    mouse: "/image/select/mouse.svg",
+    penguin: "/image/select/penguin.svg",
+    tiger: "/image/select/tiger.svg",
+    cat: "/image/select/cat.svg",
+};
+
+const Select = () => {
     const router = useRouter();
     const splideRef = useRef<SplideInstance | null>(null);
 
@@ -27,7 +30,6 @@ const Select = () => {
     const syncCenterIndex = () => {
         const splide = splideRef.current;
         if (!splide) return;
-
         const i = splide.index % charaList.length;
         setActiveIndex(i);
     };
@@ -39,12 +41,9 @@ const Select = () => {
     const handleStart = () => {
         if (isStarting) return;
         setIsStarting(true);
-
-
         const picked = charaList[activeIndex];
-
         window.setTimeout(() => {
-            router.push(`/game?chara=${encodeURIComponent(picked)}`);
+            router.push(`/game?chara=${picked}`);
         }, 1000);
     };
 
@@ -72,13 +71,13 @@ const Select = () => {
                                 pagination: false,
                             }}
                         >
-                            {charaList.map((src) => (
-                                <SplideSlide key={src}>
+                            {charaList.map((key) => (
+                                <SplideSlide key={key}>
                                     <Image
-                                        src={src}
+                                        src={charaImageMap[key]}
                                         width={300}
                                         height={320}
-                                        alt="ねずみのキャラクター"
+                                        alt={`${key}のキャラクター`}
                                     />
                                 </SplideSlide>
                             ))}

@@ -1,3 +1,8 @@
+.wrapper{
+    position: relative;
+    width: 100vw;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -5,16 +10,27 @@
     transform: translateY(-460px);
 }
 
-
 .title {
-    margin-bottom: -70px;
+    margin-bottom: -100px;
     animation: 1.5s title;
 }
 
 .completeBtn {
     position: absolute;
-    bottom: 60px;
-    right: 400px;
+    bottom: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 99;
+    cursor: pointer;
+}
+
+.charaWrap {
+    position: absolute;
+    width: 100%;
+    bottom: 190px;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 @keyframes title {
@@ -22,8 +38,6 @@
         opacity: 0;
         scale: calc(0);
     }
-
-
     100% {
         opacity: 100;
         scale: calc(1.3);
