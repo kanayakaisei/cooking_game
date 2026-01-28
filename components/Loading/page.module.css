@@ -1,0 +1,33 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.loadingTxt {
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.barWrap {
+    width: 240px;
+    height: 10px;
+    background: white;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.bar {
+    height: 100%;
+    background: #4857e3;
+    transition: width 0.1s linear;
+}
+
+.percent {
+    margin-top: 8px;
+    font-size: 24px;
+}

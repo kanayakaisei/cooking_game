@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
+import type { Splide as SplideInstance } from "@splidejs/splide";
 import "@splidejs/react-splide/css";
 import styles from "./page.module.css";
 import Image from "next/image";
@@ -15,22 +16,36 @@ const Select = () => {
         "/image/select/tiger.svg",
         "/image/select/cat.svg",
     ];
-    const [selectChara, setSelectChara] = useState(charaList[0]);
 
     const router = useRouter();
+    const splideRef = useRef<SplideInstance | null>(null);
 
+    const [activeIndex, setActiveIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
-
     const [isStarting, setIsStarting] = useState(false);
+
+    const syncCenterIndex = () => {
+        const splide = splideRef.current;
+        if (!splide) return;
+
+        const i = splide.index % charaList.length;
+        setActiveIndex(i);
+    };
+
+    useEffect(() => {
+        syncCenterIndex();
+    }, []);
 
     const handleStart = () => {
         if (isStarting) return;
         setIsStarting(true);
 
 
+        const picked = charaList[activeIndex];
+
         window.setTimeout(() => {
-            router.push(`/game?chara=${encodeURIComponent(selectChara)}`);
-        }, 1500);
+            router.push(`/game?chara=${encodeURIComponent(picked)}`);
+        }, 1000);
     };
 
 
@@ -41,6 +56,13 @@ const Select = () => {
                 <div className={styles.content}>
                     <div className={styles.charaScroll}>
                         <Splide
+                            onMounted={(splide) => {
+                                splideRef.current = splide;
+                                setActiveIndex(splide.index % charaList.length);
+                            }}
+                            onMoved={(splide) => {
+                                setActiveIndex(splide.index % charaList.length);
+                            }}
                             options={{
                                 type: "loop",
                                 perPage: 3,
@@ -50,39 +72,16 @@ const Select = () => {
                                 pagination: false,
                             }}
                         >
-
-                            <SplideSlide>
-                                <Image
-                                    src="/image/select/mouse.svg"
-                                    width={300}
-                                    height={320}
-                                    alt="ねずみのキャラクター"
-                                ></Image>
-                            </SplideSlide>
-                            <SplideSlide>
-                                <Image
-                                    src="/image/select/penguin.svg"
-                                    width={300}
-                                    height={320}
-                                    alt="ペンギンのキャラクター"
-                                ></Image>
-                            </SplideSlide>
-                            <SplideSlide>
-                                <Image
-                                    src="/image/select/tiger.svg"
-                                    width={300}
-                                    height={320}
-                                    alt="トラのキャラクター"
-                                ></Image>
-                            </SplideSlide>
-                            <SplideSlide>
-                                <Image
-                                    src="/image/select/cat.svg"
-                                    width={300}
-                                    height={320}
-                                    alt="ねこのキャラクター"
-                                ></Image>
-                            </SplideSlide>
+                            {charaList.map((src) => (
+                                <SplideSlide key={src}>
+                                    <Image
+                                        src={src}
+                                        width={300}
+                                        height={320}
+                                        alt="ねずみのキャラクター"
+                                    />
+                                </SplideSlide>
+                            ))}
                         </Splide>
                     </div>
                 </div>
@@ -95,7 +94,8 @@ const Select = () => {
                         onToggle={setIsPlaying}
                         variant="start"
                         onClick={handleStart}
-                        disabled={isStarting} />
+                        disabled={isStarting}
+                    />
                     {isStarting && (
                         <div className={styles.startOverlay}>
                             <p className={styles.startTitle} aria-label="りょうりかいし！">
@@ -107,9 +107,7 @@ const Select = () => {
                             </p>
                         </div>
                     )}
-
                 </div>
-
             </div>
         </>
     )

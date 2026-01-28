@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import styles from "./GameStartBtn.module.css";
-import { playBgm, stopBgm } from "@/lib/bgmPlayer";
+import { playGameBgm, stopGameBgm } from "@/lib/bgmPlayer";
 
 type Btn = {
     text: string;
@@ -29,8 +29,8 @@ const GameStartBtn = ({ text, isPlaying, onToggle, variant = "start", onClick, d
 
 
     useEffect(() => {
-        if (isPlaying) playBgm();
-        else stopBgm();
+        if (isPlaying) playGameBgm();
+        else stopGameBgm();
     }, [isPlaying]);
 
     const handleClick = async () => {
