@@ -8,7 +8,7 @@
 
 .logo {
     position: absolute;
-    top: 7%;
+    top: 12%;
     left: 50%;
     transform: translateX(-50%);
     animation: logo_animation 1.2s ease-out;
@@ -35,11 +35,10 @@
 
 .btnWrap {
     position: absolute;
-    top: 72%;
+    top: 58%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
-    transition: 6s;
 }
 
 .startBtn {
@@ -50,13 +49,13 @@
     font-size: 32px;
     font-weight: bold;
     color: white;
-    border-radius: 10px;
-    padding: 14px 36px;
+    border-radius: 27px;
+    padding: 18px 40px;
     text-decoration: none;
 }
 
 .fadeIn {
-    animation: fadeUp 3s infinite, opacity 1.5s ease-out forwards;
+    animation: fadeUp 2.5s infinite, opacity 1.5s ease-out forwards;
 }
 
 .fadeIn:hover {
@@ -106,7 +105,6 @@
 
     >div {
         position: absolute;
-        animation-duration: 1.8s;
         animation-timing-function: ease-out;
         animation-fill-mode: forwards;
         will-change: transform, left, right, bottom;
@@ -115,25 +113,25 @@
     .penguin {
         left: -500px;
         bottom: 0;
-        animation: penguin_in 1.8s ease-out 0.3s forwards;
+        animation: penguin_in 0.8s ease-out 0.1s forwards;
     }
 
     .mouse {
         bottom: -500px;
         left: 17%;
-        animation: mouse_in 1.8s ease-out 0.9s forwards;
+        animation: mouse_in 0.8s ease-out 0.1s forwards;
     }
 
     .tiger {
         bottom: -500px;
         right: 20%;
-        animation: tiger_in 1.8s ease-out 1.2s forwards;
+        animation: tiger_in 0.8s ease-out 0.1s forwards;
     }
 
     .cat {
         right: -500px;
         bottom: 0;
-        animation: cat_in 1.8s ease-out 0.6s forwards;
+        animation: cat_in 0.8s ease-out 0.1s forwards;
     }
 }
 

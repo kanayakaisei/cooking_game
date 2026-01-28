@@ -10,11 +10,12 @@ export default function Home() {
   const [start, setStart] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    const time = setInterval(() => {
       setStart(true);
-    }, 2000);
-    return () => clearTimeout(timer);
-  }, []);
+    }, 1000);
+    return () => clearTimeout(time)
+  }, [])
+
 
   const handleStart = async () => {
     await playStartBgm();
@@ -28,8 +29,8 @@ export default function Home() {
         <Image
           src="/image/top/logo.svg"
           alt="ロゴ"
-          width={1100}
-          height={510}
+          width={940}
+          height={350}
         />
       </h1>
       <div className={styles.btnWrap}>
