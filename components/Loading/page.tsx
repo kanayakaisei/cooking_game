@@ -19,7 +19,7 @@ const Loading = ({ onComplete }: LoadingProps) => {
     useEffect(() => {
         const loadingTimer = setInterval(() => {
             setNumber((prev) => Math.min(prev + 1, 100));
-        }, 30);
+        }, 15);
         return () => clearInterval(loadingTimer);
     }, []);
 

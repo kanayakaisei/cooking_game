@@ -1,4 +1,4 @@
-.content{
+.content {
     position: relative;
 }
 
@@ -8,7 +8,7 @@
     height: 100%;
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
 }
 
 .ingredients {
@@ -34,19 +34,26 @@
     0% {
         transform: rotate(0deg) translateY(0);
     }
+
     50% {
         transform: rotate(-25deg) translateY(20px);
     }
+
     100% {
         transform: rotate(0deg) translateY(0);
     }
 }
 
-.complete{
+.complete {
     position: absolute;
+    top: 50%;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 64px;
+    background-color: #fff;
+    padding: 80px 150px;
+    border-radius: 40px;
+    font-size: 60px;
+    width: 250px;
     display: inline-block;
     font-weight: bold;
     color: #fff;
