@@ -1,4 +1,4 @@
-.wrapper{
+.wrapper {
     position: relative;
     width: 100vw;
 }
@@ -33,11 +33,53 @@
     justify-content: space-between;
 }
 
+.mouse,
+.penguin,
+.tiger,
+.cat {
+    animation: bound 0.6s ease-in-out infinite;
+
+}
+
+.mouse {
+    animation-delay: 0s;
+}
+
+.penguin {
+    animation-delay: 0.24s;
+}
+
+.tiger {
+    animation-delay: 0.12s;
+}
+
+.cat {
+    animation-delay: 0.36s;
+}
+
+@keyframes bound {
+
+    0% {
+        transform: translateY(3) scale(1);
+    }
+
+    50% {
+        transform: translateY(-14px) scale(1.01);
+    }
+
+    100% {
+        transform: translateY(3) scale(1);
+    }
+
+}
+
+
 @keyframes title {
     0% {
         opacity: 0;
         scale: calc(0);
     }
+
     100% {
         opacity: 100;
         scale: calc(1.3);

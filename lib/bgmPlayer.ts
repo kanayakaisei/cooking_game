@@ -1,7 +1,8 @@
 let startBgm: HTMLAudioElement | null = null;
 let gameBgm: HTMLAudioElement | null = null;
+let completeBgm: HTMLAudioElement | null = null;
 
-const ensureBgm = (kind: "start" | "game") => {
+const ensureBgm = (kind: "start" | "game" | "complete") => {
     if (typeof window === "undefined") return null;
 
     if (kind === "start") {
@@ -13,12 +14,22 @@ const ensureBgm = (kind: "start" | "game") => {
         return startBgm;
     }
 
-    if (!gameBgm) {
-        gameBgm = new Audio("/sounds/gameBGM.mp3");
-        gameBgm.loop = true;
-        gameBgm.volume = 0.35;
+    if (kind === "game") {
+        if (!gameBgm) {
+            gameBgm = new Audio("/sounds/gameBGM.mp3");
+            gameBgm.loop = true;
+            gameBgm.volume = 0.35;
+        }
+        return gameBgm;
+    };
+
+
+    if (!completeBgm) {
+        completeBgm = new Audio("/sounds/completeBGM.mp4");
+        completeBgm.loop = false;
+        completeBgm.volume = 0.35;
     }
-    return gameBgm;
+    return completeBgm;
 };
 
 const safePlay = async (audio: HTMLAudioElement) => {
@@ -33,6 +44,7 @@ const safePlay = async (audio: HTMLAudioElement) => {
 
 export const playStartBgm = async () => {
     stopGameBgm();
+    stopCompleteBgm();
     const audio = ensureBgm("start");
     if (!audio) return;
     await safePlay(audio);
@@ -46,6 +58,7 @@ export const stopStartBgm = () => {
 //  ゲーム用音楽
 export const playGameBgm = async () => {
     stopStartBgm();
+    stopCompleteBgm();
     const audio = ensureBgm("game");
     if (!audio) return;
     await safePlay(audio);
@@ -56,6 +69,22 @@ export const stopGameBgm = () => {
     if (!gameBgm) return;
     gameBgm.pause();
 }
+
+// 完成時の音楽
+export const playCompleteBgm = async () => {
+    stopStartBgm();
+    stopGameBgm();
+    const audio = ensureBgm("complete");
+    if (!audio) return;
+    await safePlay(audio);
+};
+
+export const stopCompleteBgm = () => {
+    if (!completeBgm) return;
+    completeBgm.pause();
+};
+
+
 
 export const restartStartBgm = async () => {
     const a = ensureBgm("start");

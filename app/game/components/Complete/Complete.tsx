@@ -5,9 +5,18 @@ import Image from "next/image";
 import Link from "next/link";
 import confetti from "canvas-confetti";
 import GameStartBtn from "@/components/GameStartBtn/GameStartBtn";
+import { playCompleteBgm, stopCompleteBgm } from "@/lib/bgmPlayer";
 
 
 const Complete = () => {
+    useEffect(() => {
+        playCompleteBgm();
+
+        return () => {
+            stopCompleteBgm();
+        };
+    }, []);
+
     const [isPlaying, setIsPlaying] = useState(true);
 
     const fireFromSides = useCallback(() => {
