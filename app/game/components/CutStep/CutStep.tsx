@@ -103,7 +103,7 @@ const Cut = ({ onComplete }: Props) => {
                 setShowComplete(false);
                 setIsWaiting(false);
                 setStep(prev => prev + 1);
-            }, 2000);
+            }, 4000);
             return () => clearTimeout(timer);
         }
         if (imageStep >= totalSteps) {
@@ -176,11 +176,9 @@ const Cut = ({ onComplete }: Props) => {
                 />
             </div>
             {showComplete && (
-
                 <div className={styles.complete}>
                     できた！
                 </div>
-
             )}
         </div>
     );
