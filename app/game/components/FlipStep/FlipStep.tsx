@@ -99,6 +99,8 @@ const Flip = ({ onComplete }: Props) => {
                 height={349}
                 alt="皿"
                 className={styles.dish}
+                fill
+                priority
             />
             <Image
                 src={ladleImg}
@@ -106,6 +108,8 @@ const Flip = ({ onComplete }: Props) => {
                 height={353}
                 alt="おたま"
                 className={styles.ladle}
+                fill
+                priority
             />
             <Image
                 src={potImg}
@@ -113,6 +117,8 @@ const Flip = ({ onComplete }: Props) => {
                 height={307}
                 alt="鍋"
                 className={styles.pot_flip}
+                fill
+                priority
             />
         </div>
     );

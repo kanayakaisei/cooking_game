@@ -117,6 +117,7 @@ function Game() {
                                 height={374}
                                 alt="キャラクター"
                                 className={styles.character}
+                                fill
                                 priority
                             />
                         )}
