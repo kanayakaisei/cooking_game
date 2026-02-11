@@ -29,6 +29,7 @@ const List = () => {
                                             alt={list.title}
                                             width={250}
                                             height={180}
+                                            priority
                                         />
                                     </div>
                                     <div className={styles.ingredients}>
@@ -39,6 +40,7 @@ const List = () => {
                                                 alt="ingredient"
                                                 width={60}
                                                 height={40}
+                                                priority
                                             />
                                         ))}
                                     </div>
