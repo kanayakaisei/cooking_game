@@ -117,8 +117,6 @@ function Game() {
                                 height={374}
                                 alt="キャラクター"
                                 className={styles.character}
-                                fill
-                                priority
                             />
                         )}
                         {step === 0 && <Cut onComplete={() => setStep(1)} />}
