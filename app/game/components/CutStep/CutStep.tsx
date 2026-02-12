@@ -158,7 +158,6 @@ const Cut = ({ onComplete }: Props) => {
                         height={251}
                         alt="食材"
                         className={styles.ingredients}
-                        fill
                         priority
                     />
                 )}
@@ -168,7 +167,6 @@ const Cut = ({ onComplete }: Props) => {
                     height={280}
                     alt="まないた"
                     className={styles.cutBoard}
-                    fill
                     priority
                 />
                 <Image
@@ -177,7 +175,6 @@ const Cut = ({ onComplete }: Props) => {
                     height={420}
                     alt="包丁"
                     className={`${styles.knife} ${knifeActive ? styles.knifeActive : ""}`}
-                    fill
                     priority
                 />
             </div>
