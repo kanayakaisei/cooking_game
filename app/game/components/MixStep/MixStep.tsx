@@ -68,8 +68,6 @@ const Mix = ({ onComplete }: Props) => {
                         height={555}
                         alt="鍋に入ってる肉じゃが"
                         className={styles.ladle}
-                        fill
-                        priority
                     />
                 </div>
 
