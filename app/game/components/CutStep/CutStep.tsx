@@ -103,7 +103,7 @@ const Cut = ({ onComplete }: Props) => {
                 setShowComplete(false);
                 setIsWaiting(false);
                 setStep(prev => prev + 1);
-            }, 4000);
+            }, 2000);
             return () => clearTimeout(timer);
         }
         if (imageStep >= totalSteps) {
