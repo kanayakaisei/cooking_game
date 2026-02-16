@@ -1,7 +1,7 @@
 const cookingList = [
     {
         id: 1,
-        title: "「切る」",
+        title: "「きる」",
         image: "/image/cookingList/list_cut.svg",
         ingredients: []
     },
@@ -13,13 +13,13 @@ const cookingList = [
     },
     {
         id: 3,
-        title: "「ひっくり返す」",
+        title: "「ひっくりかえす」",
         image: "/image/cookingList/list_flip.svg",
         ingredients: []
     },
     {
         id: 4,
-        title: "肉じゃが",
+        title: "にくじゃが",
         image: "/image/cookingList/meat_potato.svg",
         ingredients: [
             "/image/cookingList/onion.svg",

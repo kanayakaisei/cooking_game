@@ -57,7 +57,7 @@ const Flip = ({ onComplete }: Props) => {
             } catch (e) {
                 console.error(e);
             }
-        }, 1000);
+        }, 300);
 
         return () => clearInterval(timer);
     }, [prevFlip]);
