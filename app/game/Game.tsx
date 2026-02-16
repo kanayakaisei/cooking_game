@@ -8,6 +8,7 @@ import Mix from "./components/MixStep/MixStep";
 import Flip from "./components/FlipStep/FlipStep";
 import Complete from "./components/Complete/Complete";
 import Heading from "@/components/Heading/Heading";
+import cookingList from "@/lib/detail";
 
 const CHARA_IMAGES = {
     penguin: {
@@ -67,17 +68,20 @@ const CHARA_IMAGES = {
         ],
     },
 } as const;
-
 type CharaKey = keyof typeof CHARA_IMAGES;
 type SceneKey = "cut" | "mix" | "flip";
-
 const DEFAULT_CHARA: CharaKey = "cat";
 
 
 function Game() {
     const [step, setStep] = useState(0);
+    const [complete, setComplete] = useState(false);
     const [charaStep, setCharaStep] = useState(0)
     const params = useSearchParams();
+    const recipeId = params.get("recipe");
+    const recipe = cookingList.find(
+        (item) => item.id === Number(recipeId)
+    );
 
     const charaKey = useMemo<CharaKey>(() => {
         const raw = params.get("chara") as CharaKey | null;
@@ -108,21 +112,40 @@ function Game() {
         <>
             <div className={styles.mainVisual}>
                 <div className={styles.Wrapper}>
-                    <Heading text="にくじゃが" />
+                    <Heading text={recipe?.title ?? "レシピ"} />
                     <div className={styles.illustWrap}>
-                        {step < 3 && (
+                        {!complete && !(recipe?.id === 4 && step >= 3) && (
                             <Image
                                 src={currentImage}
-                                width={360}
-                                height={374}
+                                width={330}
+                                height={344}
                                 alt="キャラクター"
                                 className={styles.character}
                             />
                         )}
-                        {step === 0 && <Cut onComplete={() => setStep(1)} />}
-                        {step === 1 && <Mix onComplete={() => setStep(2)} />}
-                        {step === 2 && <Flip onComplete={() => setStep(3)} />}
-                        {step >= 3 && <Complete />}
+                        {/* 切る工程 */}
+                        {recipe?.id === 1 && !complete && (
+                            <Cut onComplete={() => setComplete(true)} />
+                        )}
+
+                        {/* 混ぜる工程 */}
+                        {recipe?.id === 2 && !complete && (
+                            <Mix onComplete={() => setComplete(true)} />
+                        )}
+
+                        {/* ひっくり返す工程 */}
+                        {recipe?.id === 3 && !complete && (
+                            <Flip onComplete={() => setComplete(true)} />
+                        )}
+
+                        {/* 完成 */}
+                        {complete && <Complete />}
+
+                        {/* 肉じゃが */}
+                        {recipe?.id === 4 && step === 0 && <Cut onComplete={() => setStep(1)} />}
+                        {recipe?.id === 4 && step === 1 && <Mix onComplete={() => setStep(2)} />}
+                        {recipe?.id === 4 && step === 2 && <Flip onComplete={() => setStep(3)} />}
+                        {recipe?.id === 4 && step >= 3 && <Complete />}
                     </div>
                 </div>
             </div >

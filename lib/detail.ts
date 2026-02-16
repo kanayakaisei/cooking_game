@@ -28,7 +28,6 @@ const cookingList = [
             "/image/cookingList/meat.svg"
         ]
     },
-
 ]
 
 export default cookingList;

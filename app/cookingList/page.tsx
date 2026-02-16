@@ -20,7 +20,7 @@ const List = () => {
                     <Heading text="レシピいちらん" />
                     <div className={styles.cardWrap}>
                         {Detail.map((list) => (
-                            <Link key={list.id} href="/select" className={styles.link}>
+                            <Link key={list.id} href={`/select?recipe=${list.id}`} className={styles.link}>
                                 <article key={list.id} className={styles.card}>
                                     <h3>{list.title}</h3>
                                     <div className={styles.imageWrap}>

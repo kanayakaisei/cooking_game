@@ -6,29 +6,27 @@
     background: linear-gradient(90deg, #F2B873 0%, #FBCE99 100%);
     border: 3px solid #d58f49;
     animation: size 1s ease-out;
-
-    p {
-        color: #FFF;
-        font-family: Inter;
-        font-size: 32px;
-        font-weight: bold;
-    }
-
-    &:hover {
-        background: #FFF;
-
-        p {
-            color: #F2B873;
-        }
-    }
+    font-family: inherit;
 }
+
+.startBtn p {
+    color: #FFF;
+    font-size: 32px;
+}
+
+.startBtn:hover {
+    background: #FFF;
+}
+
+.startBtn:hover p {
+    color: #F2B873;
+}
+
 
 @keyframes size {
     0% {
         transform: scale(0);
     }
-
-
     100% {
         transform: scale(1);
     }
@@ -43,25 +41,21 @@
     border-radius: 10px;
     background: #ff977a;
     animation: FloatVertical 1.3s infinite;
+    font-family: inherit;
+}
 
-    p {
-        color: #FFF;
-        font-family: Inter;
-        font-size: 19px;
-        font-weight: bold;
-    }
+.endBtn p {
+    color: #FFF;
+    font-size: 19px;
 }
 
 @keyframes FloatVertical {
     0% {
         transform: scale(1);
     }
-
-
     50% {
         transform: scale(1.1);
     }
-
     100% {
         transform: scale(1);
     }
