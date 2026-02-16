@@ -26,7 +26,7 @@ const Mix = ({ onComplete }: Props) => {
             } catch (e) {
                 console.error(e);
             }
-        }, 500);
+        }, 300);
         return () => clearInterval(timer);
     }, [mixValue]);
 
