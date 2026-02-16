@@ -47,11 +47,11 @@
     background: #efc054;
     border: #cd9106 3px solid;
     font-size: 32px;
-    font-weight: bold;
     color: white;
-    border-radius: 27px;
+    border-radius: 16px;
     padding: 18px 40px;
     text-decoration: none;
+    font-family: inherit;
 }
 
 .fadeIn {
