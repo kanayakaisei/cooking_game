@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/navigation";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import type { Splide as SplideInstance } from "@splidejs/splide";
@@ -27,6 +28,9 @@ const Select = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isStarting, setIsStarting] = useState(false);
 
+    const params = useSearchParams();
+    const recipeId = params.get("recipe");
+
     const syncCenterIndex = () => {
         const splide = splideRef.current;
         if (!splide) return;
@@ -43,7 +47,7 @@ const Select = () => {
         setIsStarting(true);
         const picked = charaList[activeIndex];
         window.setTimeout(() => {
-            router.push(`/game?chara=${picked}`);
+            router.push(`/game?recipe=${recipeId}&chara=${picked}`);
         }, 1000);
     };
 
