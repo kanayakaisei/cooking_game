@@ -85,7 +85,7 @@ const Complete = () => {
             <div className={styles.completeBtn}>
                 <Link href="/cookingList">
                     <GameStartBtn
-                        text={"おわり！"}
+                        text={"おわり"}
                         isPlaying={isPlaying}
                         onToggle={setIsPlaying}
                         variant="end"
