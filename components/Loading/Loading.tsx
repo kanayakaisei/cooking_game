@@ -1,7 +1,7 @@
 "use client"
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import styles from "./page.module.css";
+import styles from "./Loading.module.css";
 
 const image = [
     "/image/components/loadingImg1.svg",
