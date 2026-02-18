@@ -7,7 +7,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    transform: translateY(-460px);
+    gap: 60px;
 }
 
 .title {
@@ -16,19 +16,16 @@
 }
 
 .completeBtn {
-    position: absolute;
-    bottom: 350px;
-    left: 50%;
-    transform: translateX(-50%);
+    text-align: center;
+    font-size: 32px;
     z-index: 99;
     cursor: pointer;
-    font-size: 32px;
 }
 
 .charaWrap {
     position: absolute;
     width: 100%;
-    bottom: 190px;
+    bottom: -180px;
     left: 0;
     display: flex;
     justify-content: space-between;
