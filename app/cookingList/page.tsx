@@ -5,7 +5,7 @@ import Image from "next/image";
 import Heading from "@/components/Heading/Heading";
 import Detail from "@/lib/detail";
 import Link from "next/link";
-import Loading from "@/components/Loading/page";
+import Loading from "@/components/Loading/Loading";
 
 const List = () => {
     const [loading, setLoading] = useState(false);

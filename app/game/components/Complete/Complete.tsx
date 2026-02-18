@@ -67,23 +67,20 @@ const Complete = () => {
     return (
         <div className={styles.wrapper}>
             <div className={styles.container}>
-                <div className={styles.title}>
-                    <Image
-                        src="/image/game/Completed.png"
-                        width={860}
-                        height={480}
-                        alt="かんせいタイトル"
-                    />
-                </div>
+                <Image
+                    src="/image/game/Completed.png"
+                    width={800}
+                    height={400}
+                    alt="かんせいタイトル"
+                    className={styles.title}
+                />
                 <Image
                     src="/image/game/meat_potato.png"
                     width={435}
                     height={357}
                     alt="肉じゃが"
                 />
-            </div>
-            <div className={styles.completeBtn}>
-                <Link href="/cookingList">
+                <Link href="/cookingList" className={styles.completeBtn}>
                     <GameStartBtn
                         text={"おわり"}
                         isPlaying={isPlaying}
@@ -91,7 +88,7 @@ const Complete = () => {
                         variant="end"
                     />
                 </Link >
-            </div >
+            </div>
             <div className={styles.charaWrap}>
                 <div>
                     <Image

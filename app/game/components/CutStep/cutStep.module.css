@@ -20,8 +20,8 @@
 
 .knife {
     position: absolute;
-    right: -10%;
-    top: -80px;
+    right: -5;
+    top: -120px;
     transform-origin: bottom center;
 }
 
