@@ -9,6 +9,7 @@ import Flip from "./components/FlipStep/FlipStep";
 import Complete from "./components/Complete/Complete";
 import Heading from "@/components/Heading/Heading";
 import cookingList from "@/lib/detail";
+import StepFlow from "@/components/StepFlow/StepFlow";
 
 const CHARA_IMAGES = {
     penguin: {
@@ -109,12 +110,17 @@ function Game() {
     }, [scene]);
 
     return (
-        <>
-            <div className={styles.mainVisual}>
-                <div className={styles.Wrapper}>
+        <div className={styles.mainVisual}>
+            <div className={styles.Wrapper}>
+                {!complete && !(recipe?.id == 4 && step >= 3) && (
                     <Heading text={recipe?.title ?? "レシピ"} />
-                    <div className={styles.illustWrap}>
-                        {!complete && !(recipe?.id === 4 && step >= 3) && (
+                )}
+                <div className={styles.illustWrap}>
+                    {!complete && !(recipe?.id === 4 && step >= 3) && (
+                        <>
+                            {recipe?.id === 4 && (
+                                <StepFlow currentStep={step} />
+                            )}
                             <Image
                                 src={currentImage}
                                 width={330}
@@ -122,34 +128,34 @@ function Game() {
                                 alt="キャラクター"
                                 className={styles.character}
                             />
-                        )}
-                        {/* 切る工程 */}
-                        {recipe?.id === 1 && !complete && (
-                            <Cut onComplete={() => setComplete(true)} />
-                        )}
+                        </>
+                    )}
+                    {/* 切る工程 */}
+                    {recipe?.id === 1 && !complete && (
+                        <Cut onComplete={() => setComplete(true)} />
+                    )}
 
-                        {/* 混ぜる工程 */}
-                        {recipe?.id === 2 && !complete && (
-                            <Mix onComplete={() => setComplete(true)} />
-                        )}
+                    {/* 混ぜる工程 */}
+                    {recipe?.id === 2 && !complete && (
+                        <Mix onComplete={() => setComplete(true)} />
+                    )}
 
-                        {/* ひっくり返す工程 */}
-                        {recipe?.id === 3 && !complete && (
-                            <Flip onComplete={() => setComplete(true)} />
-                        )}
+                    {/* ひっくり返す工程 */}
+                    {recipe?.id === 3 && !complete && (
+                        <Flip onComplete={() => setComplete(true)} />
+                    )}
 
-                        {/* 完成 */}
-                        {complete && <Complete />}
+                    {/* 完成 */}
+                    {complete && <Complete />}
 
-                        {/* 肉じゃが */}
-                        {recipe?.id === 4 && step === 0 && <Cut onComplete={() => setStep(1)} />}
-                        {recipe?.id === 4 && step === 1 && <Mix onComplete={() => setStep(2)} />}
-                        {recipe?.id === 4 && step === 2 && <Flip onComplete={() => setStep(3)} />}
-                        {recipe?.id === 4 && step >= 3 && <Complete />}
-                    </div>
+                    {/* 肉じゃが */}
+                    {recipe?.id === 4 && step === 0 && <Cut onComplete={() => setStep(1)} />}
+                    {recipe?.id === 4 && step === 1 && <Mix onComplete={() => setStep(2)} />}
+                    {recipe?.id === 4 && step === 2 && <Flip onComplete={() => setStep(3)} />}
+                    {recipe?.id === 4 && step >= 3 && <Complete />}
                 </div>
-            </div >
-        </>
+            </div>
+        </div >
     )
 }
 
