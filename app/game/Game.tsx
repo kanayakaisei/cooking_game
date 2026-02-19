@@ -1,5 +1,5 @@
 "use client"
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { useSearchParams } from "next/navigation";
 import styles from "./page.module.css";
 import Image from "next/image";
@@ -83,19 +83,23 @@ function Game() {
     const recipe = cookingList.find(
         (item) => item.id === Number(recipeId)
     );
+    const handleComplete = useCallback(() => {
+        setStep(prev => prev + 1);
+    }, []);
+
 
     const charaKey = useMemo<CharaKey>(() => {
         const raw = params.get("chara") as CharaKey | null;
         return raw && raw in CHARA_IMAGES ? raw : DEFAULT_CHARA;
     }, [params]);
 
-    const scene: SceneKey =
-        step === 0 ? "cut" :
-            step === 1 ? "mix" :
-                "flip";
-
-    const images = CHARA_IMAGES[charaKey][scene];
+    const scene = recipe?.steps?.[step] as SceneKey | undefined;
+    const images = scene ? CHARA_IMAGES[charaKey][scene] : CHARA_IMAGES[charaKey]["cut"];
     const currentImage = images[charaStep];
+    const finished = !!recipe?.steps && step >= recipe.steps.length;
+    useEffect(() => {
+        console.log("step changed:", step);
+    }, [step]);
 
     useEffect(() => {
         const stepTime = setInterval(() => {
@@ -112,13 +116,13 @@ function Game() {
     return (
         <div className={styles.mainVisual}>
             <div className={styles.Wrapper}>
-                {!complete && !(recipe?.id == 4 && step >= 3) && (
+                {!complete && !finished && (
                     <Heading text={recipe?.title ?? "レシピ"} />
                 )}
                 <div className={styles.illustWrap}>
-                    {!complete && !(recipe?.id === 4 && step >= 3) && (
+                    {!complete && !finished && (
                         <>
-                            {recipe?.id === 4 && (
+                            {recipe?.steps && !finished && (
                                 <StepFlow currentStep={step} />
                             )}
                             <Image
@@ -130,29 +134,31 @@ function Game() {
                             />
                         </>
                     )}
-                    {/* 切る工程 */}
-                    {recipe?.id === 1 && !complete && (
-                        <Cut onComplete={() => setComplete(true)} />
+                    {!complete && recipe?.steps && !finished && (
+                        <>
+                            {scene === "cut" && (
+                                <Cut
+                                    cutSteps={recipe.cutSteps ?? []}
+                                    onComplete={() => setStep(prev => prev + 1)}
+                                />
+                            )}
+
+                            {scene === "mix" && (
+                                <Mix
+                                    mixImages={recipe.mixImages ?? []}
+                                    onComplete={() => setStep(prev => prev + 1)}
+                                />
+                            )}
+
+                            {scene === "flip" && (
+                                <Flip
+                                    flipImage={recipe.flipImages}
+                                    onComplete={handleComplete}
+                                />
+                            )}
+                        </>
                     )}
-
-                    {/* 混ぜる工程 */}
-                    {recipe?.id === 2 && !complete && (
-                        <Mix onComplete={() => setComplete(true)} />
-                    )}
-
-                    {/* ひっくり返す工程 */}
-                    {recipe?.id === 3 && !complete && (
-                        <Flip onComplete={() => setComplete(true)} />
-                    )}
-
-                    {/* 完成 */}
-                    {complete && <Complete />}
-
-                    {/* 肉じゃが */}
-                    {recipe?.id === 4 && step === 0 && <Cut onComplete={() => setStep(1)} />}
-                    {recipe?.id === 4 && step === 1 && <Mix onComplete={() => setStep(2)} />}
-                    {recipe?.id === 4 && step === 2 && <Flip onComplete={() => setStep(3)} />}
-                    {recipe?.id === 4 && step >= 3 && <Complete />}
+                    {(complete || finished) && <Complete />}
                 </div>
             </div>
         </div >
