@@ -8,16 +8,18 @@ export type CookingItem = {
     image: string;
     ingredients: string[];
     steps?: ("cut" | "mix" | "flip")[];
-    mixImage?: string[];
-    flipImage?: 
-        {
-            pot: string[][];
-            dish: string[][];
-            ladle:string[][];
-        };
+    cutSteps?: CutStepImage[];
+    mixImages?: string[];
+    flipImages?: {
+        pot: string[][];
+        dish: string[][];
+        ladle: string[][];
+    };
+    completeImage?: string;
+    tutorial?: boolean; //チュートリアル用
 };
 
-const cookingList = [
+const cookingList: CookingItem[] = [
     {
         id: 1,
         title: "「きる」",
@@ -34,6 +36,15 @@ const cookingList = [
             },
             {
                 steps: [
+                    "/image/game/ingredients/onion_1.png",
+                    "/image/game/ingredients/onion_2.png",
+                    "/image/game/ingredients/onion_3.png",
+                    "/image/game/ingredients/onion_4.png",
+                    "/image/game/ingredients/onion_5.png"
+                ]
+            },
+            {
+                steps: [
                     "/image/game/ingredients/carrot_1.png",
                     "/image/game/ingredients/carrot_2.png",
                     "/image/game/ingredients/carrot_3.png",
@@ -42,21 +53,50 @@ const cookingList = [
                 ]
             },
         ],
-        steps:["cut"]
+        steps:["cut"],
+        completeImage:"/image/game/cut_complete.svg",
+        tutorial:true
     },
     {
         id: 2,
         title: "「まぜる」",
         image: "/image/cookingList/list_mix.svg",
         ingredients: [],
-        steps:["mix"]
+        steps:["mix"],
+        mixImages: [
+            "/image/game/meat_potato_mix1.png", "/image/game/meat_potato_mix2.png", "/image/game/meat_potato_mix3.png"
+        ],
+        completeImage:"/image/game/mix_complete.png",
+        tutorial:true
     },
     {
         id: 3,
         title: "「ひっくりかえす」",
         image: "/image/cookingList/list_flip.svg",
         ingredients: [],
-        steps:["flip"]
+        steps:["flip"],
+        flipImages:{
+            pot:[
+                ["meat_potato_pot1", "meat_potato_pot1"],
+                ["meat_potato_pot2", "meat_potato_pot2"],
+                ["meat_potato_pot3", "meat_potato_pot3"],
+                ["meat_potato_pot3", "meat_potato_pot3"],
+            ],
+            dish:[
+                ["meat_potato_dish1", "meat_potato_dish1"],
+                ["meat_potato_dish2", "meat_potato_dish2"],
+                ["meat_potato_dish3", "meat_potato_dish3"],
+                ["meat_potato_dish4", "meat_potato_dish4"],
+            ],
+            ladle:[
+                ["meat_potato_ladle1", "meat_potato_ladle2"],
+                ["meat_potato_ladle1", "meat_potato_ladle2"],
+                ["meat_potato_ladle1", "meat_potato_ladle2"],
+                ["ladle", "ladle"],
+            ],
+        },
+        completeImage:"/image/game/meat_potato.svg",
+        tutorial:true
     },
     {
         id: 4,
@@ -128,7 +168,8 @@ const cookingList = [
                 ["meat_potato_ladle1", "meat_potato_ladle2"],
                 ["ladle", "ladle"],
             ],
-        }
+        },
+        completeImage:"/image/game/meat_potato.svg"
     },
     {
         id: 5,
@@ -173,10 +214,10 @@ const cookingList = [
         ],
         flipImages:{
             pot:[
-                ["meat_potato_pot1", "meat_potato_pot1"],
-                ["meat_potato_pot2", "meat_potato_pot2"],
-                ["meat_potato_pot3", "meat_potato_pot3"],
-                ["meat_potato_pot3", "meat_potato_pot3"],
+                ["curry_rice_pot1", "curry_rice_pot1"],
+                ["curry_rice_pot2", "curry_rice_pot2"],
+                ["curry_rice_pot3", "curry_rice_pot3"],
+                ["curry_rice_pot3", "curry_rice_pot3"],
             ],
             dish:[
                 ["curry_rice_dish1", "curry_rice_dish1"],
@@ -190,7 +231,8 @@ const cookingList = [
                 ["curry_rice_ladle3", "curry_rice_ladle4"],
                 ["ladle", "ladle"],
             ],
-        }
+        },
+        completeImage:"/image/game/curry_rice.svg"
     }
 ];
 export default cookingList;
