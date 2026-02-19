@@ -1,6 +1,7 @@
 .dish{
     position: relative;
     padding-top: 60px;
+    object-fit: contain;
 }
 
 .ladle{

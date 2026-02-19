@@ -3,68 +3,40 @@ import { useState, useEffect, useRef } from "react";
 import styles from "./cutStep.module.css";
 import Image from "next/image";
 
-type CutImage = {
+type CutStepImage = {
     steps: string[];
 };
 
-type CutStep = {
-    cut: CutImage[];
-};
-
 type Props = {
+    cutSteps: CutStepImage[];
     onComplete: () => void;
 }
 
-const cookingImages: CutStep = {
-    cut: [
-        {
-            steps: [
-                "/image/game/ingredients/potato_1.png",
-                "/image/game/ingredients/potato_2.png",
-                "/image/game/ingredients/potato_3.png",
-                "/image/game/ingredients/potato_4.png"
-            ]
-        },
-        {
-            steps: [
-                "/image/game/ingredients/meat_1.png",
-                "/image/game/ingredients/meat_2.png",
-                "/image/game/ingredients/meat_3.png",
-                "/image/game/ingredients/meat_4.png",
-                "/image/game/ingredients/meat_5.png"
-            ]
-        },
-        {
-            steps: [
-                "/image/game/ingredients/onion_1.png",
-                "/image/game/ingredients/onion_2.png",
-                "/image/game/ingredients/onion_3.png",
-                "/image/game/ingredients/onion_4.png",
-                "/image/game/ingredients/onion_5.png"
-            ]
-        },
-        {
-            steps: [
-                "/image/game/ingredients/carrot_1.png",
-                "/image/game/ingredients/carrot_2.png",
-                "/image/game/ingredients/carrot_3.png",
-                "/image/game/ingredients/carrot_4.png",
-                "/image/game/ingredients/carrot_5.png"
-            ]
-        }
-    ],
-};
-
-const Cut = ({ onComplete }: Props) => {
+const Cut = ({ onComplete, cutSteps }: Props) => {
     const [imageStep, setStep] = useState(0);
     const [cutCount, setCount] = useState(0);
     const [updateTime, setUpdateTime] = useState(0);
     const [knifeActive, setKnifeActive] = useState(false);
     const [showComplete, setShowComplete] = useState(false);
     const [isWaiting, setIsWaiting] = useState(false);
-    const totalSteps = cookingImages.cut.reduce((sum, item) => sum + item.steps.length, 0);
-
+    const totalSteps = cutSteps.reduce(
+        (sum, item) => sum + item.steps.length,
+        0
+    );
     const cutSound = useRef<HTMLAudioElement | null>(null);
+
+    let remaining = imageStep;
+    let ingredientIndex = 0;
+    while (
+        ingredientIndex < cutSteps.length &&
+        remaining >= cutSteps[ingredientIndex].steps.length
+    ) {
+        remaining -= cutSteps[ingredientIndex].steps.length;
+        ingredientIndex++;
+    }
+
+    const ingredient = cutSteps[ingredientIndex];
+
 
     useEffect(() => {
         const timer = setInterval(async () => {
@@ -93,21 +65,17 @@ const Cut = ({ onComplete }: Props) => {
 
     useEffect(() => {
         if (isWaiting) return;
-        const ingredientSteps = cookingImages.cut[ingredientIndex]?.steps.length ?? 0;
-        // steps[] の最後に到達した瞬間
+        const ingredientSteps = cutSteps[ingredientIndex]?.steps.length ?? 0;
+
         if (remaining === ingredientSteps - 1) {
             setIsWaiting(true);
             setShowComplete(true);
-
             const timer = setTimeout(() => {
                 setShowComplete(false);
                 setIsWaiting(false);
                 setStep(prev => prev + 1);
             }, 2000);
             return () => clearTimeout(timer);
-        }
-        if (imageStep >= totalSteps) {
-            onComplete();
         }
     }, [imageStep]);
 
@@ -137,16 +105,6 @@ const Cut = ({ onComplete }: Props) => {
         }
     }, [imageStep]);
 
-    let remaining = imageStep;
-    let ingredientIndex = 0;
-
-    while (remaining >= cookingImages.cut[ingredientIndex].steps.length) {
-        remaining -= cookingImages.cut[ingredientIndex].steps.length;
-        ingredientIndex++;
-        if (ingredientIndex >= cookingImages.cut.length) break;
-    }
-
-    const ingredient = cookingImages.cut[ingredientIndex];
 
     return (
         <div className={styles.content}>

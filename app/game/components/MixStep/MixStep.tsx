@@ -4,14 +4,16 @@ import styles from "./mixStep.module.css";
 import Image from "next/image";
 
 type Props = {
+    mixImages: string[];
     onComplete: () => void;
 }
 
-const Mix = ({ onComplete }: Props) => {
-    const mixImg = ["/image/game/mix_step1.png", "/image/game/mix_step2.png", "/image/game/mix_step3.png"]
+const Mix = ({ onComplete, mixImages }: Props) => {
     const [mixValue, setMixValue] = useState(0);
     const [mixStep, setMixStep] = useState(0);
     const mixSound = useRef<HTMLAudioElement | null>(null);
+    console.log("mixImages:", mixImages);
+
 
     useEffect(() => {
         const timer = setInterval(async () => {
@@ -53,7 +55,8 @@ const Mix = ({ onComplete }: Props) => {
         }
     }, [mixStep]);
 
-    const ladle = mixImg[mixStep % 3];
+    if (!mixImages.length) return null;
+    const ladle = mixImages[mixStep % mixImages.length];
 
     // ゲージの最大値：15
     const gauge = Math.min((mixStep / 15) * 100, 100);
@@ -66,7 +69,7 @@ const Mix = ({ onComplete }: Props) => {
                         src={ladle}
                         width={613}
                         height={555}
-                        alt="鍋に入ってる肉じゃが"
+                        alt="鍋で煮込む"
                         className={styles.ladle}
                     />
                 </div>
