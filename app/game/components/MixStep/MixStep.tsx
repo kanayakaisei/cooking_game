@@ -35,7 +35,7 @@ const Mix = ({ onComplete, mixImages }: Props) => {
     useEffect(() => {
         mixSound.current = new Audio("/sounds/mix.mp3");
         mixSound.current.loop = true;
-        mixSound.current.volume = 0.2;
+        mixSound.current.volume = 0.5;
 
         return () => {
             mixSound.current?.pause();

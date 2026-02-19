@@ -7,8 +7,11 @@ import confetti from "canvas-confetti";
 import GameStartBtn from "@/components/GameStartBtn/GameStartBtn";
 import { playCompleteBgm, stopCompleteBgm } from "@/lib/bgmPlayer";
 
+type Props = {
+    completeImage: string;
+};
 
-const Complete = () => {
+const Complete = ({ completeImage }: Props) => {
     useEffect(() => {
         playCompleteBgm();
 
@@ -75,10 +78,12 @@ const Complete = () => {
                     className={styles.title}
                 />
                 <Image
-                    src="/image/game/meat_potato.png"
-                    width={435}
-                    height={357}
-                    alt="肉じゃが"
+                    src={completeImage}
+                    width={0}
+                    height={0}
+                    sizes="100vw"
+                    style={{ width: "auto", height: "auto" }}
+                    alt="完成料理"
                 />
                 <Link href="/cookingList" className={styles.completeBtn}>
                     <GameStartBtn

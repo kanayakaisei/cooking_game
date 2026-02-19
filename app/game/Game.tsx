@@ -76,7 +76,6 @@ const DEFAULT_CHARA: CharaKey = "cat";
 
 function Game() {
     const [step, setStep] = useState(0);
-    const [complete, setComplete] = useState(false);
     const [charaStep, setCharaStep] = useState(0)
     const params = useSearchParams();
     const recipeId = params.get("recipe");
@@ -116,13 +115,13 @@ function Game() {
     return (
         <div className={styles.mainVisual}>
             <div className={styles.Wrapper}>
-                {!complete && !finished && (
+                {!finished && (
                     <Heading text={recipe?.title ?? "レシピ"} />
                 )}
                 <div className={styles.illustWrap}>
-                    {!complete && !finished && (
+                    {!finished && (
                         <>
-                            {recipe?.steps && !finished && (
+                            {recipe?.steps && !finished && !recipe?.tutorial && (
                                 <StepFlow currentStep={step} />
                             )}
                             <Image
@@ -134,22 +133,20 @@ function Game() {
                             />
                         </>
                     )}
-                    {!complete && recipe?.steps && !finished && (
+                    {recipe?.steps && !finished && (
                         <>
                             {scene === "cut" && (
                                 <Cut
                                     cutSteps={recipe.cutSteps ?? []}
-                                    onComplete={() => setStep(prev => prev + 1)}
+                                    onComplete={handleComplete}
                                 />
                             )}
-
                             {scene === "mix" && (
                                 <Mix
                                     mixImages={recipe.mixImages ?? []}
-                                    onComplete={() => setStep(prev => prev + 1)}
+                                    onComplete={handleComplete}
                                 />
                             )}
-
                             {scene === "flip" && (
                                 <Flip
                                     flipImage={recipe.flipImages}
@@ -158,7 +155,9 @@ function Game() {
                             )}
                         </>
                     )}
-                    {(complete || finished) && <Complete />}
+                    {finished && recipe?.completeImage && (
+                        <Complete completeImage={recipe.completeImage} />
+                    )}
                 </div>
             </div>
         </div >
