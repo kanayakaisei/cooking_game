@@ -66,7 +66,7 @@ const cookingList: CookingItem[] = [
         mixImages: [
             "/image/game/meat_potato_mix1.png", "/image/game/meat_potato_mix2.png", "/image/game/meat_potato_mix3.png"
         ],
-        completeImage:"/image/game/mix_complete.png",
+        completeImage:"/image/game/mix_complete.svg",
         tutorial:true
     },
     {
