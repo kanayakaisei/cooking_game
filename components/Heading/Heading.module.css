@@ -30,6 +30,7 @@
     border: 3px solid #45886A;
     background: linear-gradient(91deg, #D8F1E6 0%, #EBFFF6 107.38%);
     overflow: hidden;
+    font-weight: bold;
 }
 
 .title::before {
