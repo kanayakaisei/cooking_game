@@ -12,6 +12,7 @@
 .startBtn p {
     color: #FFF;
     font-size: 32px;
+    font-weight: bold;
 }
 
 .startBtn:hover {
