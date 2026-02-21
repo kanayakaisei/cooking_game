@@ -71,7 +71,7 @@ const cookingList: CookingItem[] = [
     },
     {
         id: 3,
-        title: "「ひっくりかえす」",
+        title: "「よそう」",
         image: "/image/cookingList/list_flip.svg",
         ingredients: [],
         steps:["flip"],
